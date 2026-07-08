@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ImgSlot from '../components/ImgSlot.astro';
+import SpeakerCard from '../components/SpeakerCard.astro';
+import SponsorForm from '../components/SponsorForm.astro';
+import PackageTiers from '../components/PackageTiers.astro';
+import { SPEAKERS } from '../data/speakers';
+---
+
+<BaseLayout
+  title="Partner With The Premier Entrepreneur Conference · April 2027"
+  description="A 2–3 day immersive conference for 700–1,000 entrepreneurs in Bali, April 2027. Daniel Priestley confirmed. Partner with us."
+  ctaHref="#partner"
+  ctaLabel="Partner with us"
+>
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker">Bali · April 2027 · AI Powered Events Indonesia</div>
+      <h1>The premier entrepreneur conference for the builders of the <em>AI era</em>.</h1>
+      <p class="lead">A 2–3 day immersive, workshop-style event for 700–1,000 entrepreneurs — blending the power of AI with human connection and conscious living, in the world's most inspiring place to gather.</p>
+      <div class="hero-badges">
+        <div class="hero-badge">🎤 <b>Daniel Priestley</b> — confirmed</div>
+        <div class="hero-badge">🤝 Dan Koe &amp; Tom Noske — in discussion</div>
+        <div class="hero-badge">🏝️ Kura Kura Bali SEZ — target venue partner</div>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#partner">Become a founding partner</a>
+        <a class="btn btn-ghost" href="#event">Explore the event</a>
+      </div>
+      <div class="hero-img">
+        <ImgSlot label="Image — Bali hero / venue at golden hour" minHeight="420px" />
+      </div>
+    </div>
+  </header>
+
+  <section id="event" style="padding-top:0;background:var(--paper)">
+    <div class="wrap">
+      <div class="facts">
+        <div class="card"><div class="label">What</div><p>2–3 day immersive, workshop-style conference. Practical. Tactical. For builders and creators.</p></div>
+        <div class="card"><div class="label">When</div><p><b>April 2027.</b> Teaser event September 2026 in Canggu — proof of concept and community ignition.</p></div>
+        <div class="card"><div class="label">Where</div><p>Bali, Indonesia — targeting the Kura Kura Bali Special Economic Zone, in collaboration with government partners.</p></div>
+        <div class="card"><div class="label">Who</div><p>700–1,000 paying entrepreneurs: founders, creators, coaches and operators. Builders, not browsers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision" style="background:var(--paper);padding-top:64px">
+    <div class="wrap">
+      <div class="kicker">The Vision</div>
+      <h2>Become AI powered.<br>Remain human.</h2>
+      <p class="lead mb-44">AI is handing back the most valuable asset an entrepreneur has: time. This event is about what you do with it. Every experience we build blends three threads — so people leave sharper in business, richer in connection, and more conscious in how they live.</p>
+      <div class="grid g3">
+        <div class="card">
+          <div class="pillar-icon" style="background:#fdeee2">🫂</div>
+          <h3>Human</h3>
+          <p class="text-soft">Connection. Offline, in-person experiences — music, arts and creativity woven through the entire event. Real rooms, real relationships.</p>
+        </div>
+        <div class="card">
+          <div class="pillar-icon" style="background:var(--accent-soft)">⚡</div>
+          <h3>Artificial</h3>
+          <p class="text-soft">Leverage. The practical power of AI to take time back, build leaner businesses, and create a more meaningful life outside the screen.</p>
+        </div>
+        <div class="card">
+          <div class="pillar-icon" style="background:#f3ead8">✨</div>
+          <h3>Divine</h3>
+          <p class="text-soft">Consciousness. Spiritual connectedness and presence — the dimension Bali does better than anywhere on earth.</p>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:26px">Educate. Entertain. Inspire. One event, three threads — curated FOR the crowd, not for the sponsors' logos.</div>
+    </div>
+  </section>
+
+  <section id="why-bali">
+    <div class="wrap">
+      <div class="grid g2" style="align-items:center;gap:52px">
+        <ImgSlot label="Image — 'old Bali' postcard shot" minHeight="440px" />
+        <div>
+          <div class="kicker">Why Bali</div>
+          <h2>What people think Bali is.</h2>
+          <div class="strike-list">
+            <p>Yoga retreats.</p>
+            <p>Cheap living, slow pace.</p>
+            <p>Backpackers on a budget.</p>
+            <p>Digital nomads in beach cafés.</p>
+            <p>A place to escape, and start…</p>
+            <p>Not a place to build and scale.</p>
+          </div>
+          <p style="margin-top:22px" class="text-soft">This was the story for 15 years.</p>
+          <p style="font-weight:700;font-size:18px">It's not the story anymore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <div class="kicker">Why Bali</div>
+      <h2>What Bali actually is now.</h2>
+      <div class="grid g2" style="margin-top:14px">
+        <div style="display:grid;gap:22px">
+          <div class="card">
+            <div class="stat">50,000+</div>
+            <p class="stat-sub">Long-term foreign residents, entrepreneurs and digital professionals currently based in Bali.</p>
+          </div>
+          <div class="card">
+            <div class="stat">35%</div>
+            <p class="stat-sub">of digital nomads in Bali earn $100,000 – $250,000 annually. Ready and willing to invest to go further. <i>This is not a broke crowd.</i></p>
+          </div>
+          <div class="card">
+            <div class="stat">150+</div>
+            <p class="stat-sub">Coworking spaces across the island.</p>
+          </div>
+        </div>
+        <div style="display:grid;gap:22px">
+          <div class="card" style="background:var(--dark-card-2)">
+            <div class="label">Bali can handle the demand</div>
+            <p style="font-size:15px;color:#c9c9d1;line-height:1.85">
+              <b style="color:#fff">Massive throughput:</b> 74 events and 95,000 attendees projected in just 90 days.<br>
+              <b style="color:#fff">The "bleisure" edge:</b> peak attendance driven by the world's top business + leisure appeal.<br>
+              <b style="color:#fff">Elite infrastructure:</b> world-class venues like the Bali International Convention Centre.<br>
+              <b style="color:#fff">Battle-tested:</b> proven host of high-stakes global summits — G20, IMF.<br>
+              <b style="color:#fff">Global gateway:</b> direct access from Singapore, Dubai and Sydney.
+            </p>
+          </div>
+          <div class="quote">"As a teenager, I went to Bali a lot… which is why, when we bought Necker Island, we made it like a mini Bali."<br><b style="font-style:normal;display:block;margin-top:10px">Richard Branson</b></div>
+        </div>
+      </div>
+      <div class="grid g3 mt-26">
+        <ImgSlot label="Image — luxury resort venue" minHeight="220px" />
+        <ImgSlot label="Image — conference / stage" minHeight="220px" />
+        <ImgSlot label="Image — Bali landscape" minHeight="220px" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid g2" style="gap:52px;align-items:start">
+        <div>
+          <div class="kicker">The Gap</div>
+          <h2>Here's what we noticed.</h2>
+          <p class="lead" style="margin-bottom:20px">The same entrepreneurs, watching the same podcasts — wishing they could meet the people teaching them. Learn from them. Connect with them. Buy from them.</p>
+          <p class="text-soft" style="margin-bottom:20px">They fly to Singapore, Dubai and London for the "real" events. Then they come back to Bali.</p>
+          <p style="font-size:19px;font-weight:600">They're not looking to be motivated. They're looking to be <u>shown how</u>.</p>
+        </div>
+        <div style="display:grid;gap:22px">
+          <div class="card" style="background:var(--paper)">
+            <div class="label">What exists today</div>
+            <p class="text-soft" style="font-size:15.5px;line-height:1.8">Steven Bartlett came to Bali in 2025 — over 1,000 people showed up. Twice. Crypto and AI events pull 2,000+, but they're totally unaligned to the builders here: either purely motivational, or so sponsor-focused you leave unsure what you came for.</p>
+          </div>
+          <div class="quote light-quote" style="font-style:normal">
+            This is about building something curated <b>FOR the crowd</b>.<br>
+            <b>Practical. Tactical. For builders and creators.</b><br>
+            People who want to meet Daniel Priestley — not just watch YouTube.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="audience" class="dark">
+    <div class="wrap">
+      <div class="kicker">The Audience</div>
+      <h2>Who's in the room.</h2>
+      <div class="grid g3" style="margin-top:14px">
+        <div style="display:grid;gap:22px">
+          <div class="card">
+            <div class="label">Who they are</div>
+            <div class="stat">700–1,000</div>
+            <p class="stat-sub">Entrepreneurs. Early-to-mid stage founders building personal brands, online courses, coaching, digital products and SaaS.</p>
+          </div>
+          <div class="card">
+            <div class="label">Investment level</div>
+            <p style="font-size:18px;font-weight:600">Tickets: $499 – $1,499</p>
+            <p class="stat-sub">Plus flights. Plus accommodation. <i>These aren't casual attendees.</i></p>
+          </div>
+        </div>
+        <div style="display:grid;gap:22px">
+          <div class="card">
+            <div class="label">Where they're traveling from</div>
+            <p style="font-size:15px;line-height:2;color:#c9c9d1">Existing Bali community · Singapore · Hong Kong · Australia · Tokyo · SE Asia (Bangkok) · UAE &amp; Middle East · UK, Europe and USA (stretch markets)</p>
+          </div>
+          <div class="quote">Builders, not browsers. They've paid to be here. And will be qualified, ready to buy.</div>
+        </div>
+        <div class="card">
+          <div class="label">Key stats</div>
+          <div class="stat" style="font-size:40px">35%</div>
+          <p class="stat-sub" style="margin-bottom:20px">earn $100K – $250K annually</p>
+          <div class="stat" style="font-size:40px">86%</div>
+          <p class="stat-sub" style="margin-bottom:20px">identify as entrepreneurs</p>
+          <div class="stat" style="font-size:40px">81%</div>
+          <p class="stat-sub">invest in coaching and courses</p>
+        </div>
+      </div>
+      <div class="card mt-26" style="background:var(--dark-card-2)">
+        <div class="label">Why this matters to partners</div>
+        <p style="color:#c9c9d1;font-size:15.5px">This audience runs on software, funnels, coaching and content. They are active buyers of the tools that power their businesses — CRM, automation, marketing platforms, AI tooling — and they make purchase decisions fast. A partner in this room isn't buying a logo on a banner; they're meeting a concentrated, qualified segment of their exact customer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper)">
+    <div class="wrap">
+      <div class="kicker">The Demand</div>
+      <h2>The demand is real.</h2>
+      <div class="grid g3" style="margin-top:14px">
+        <div class="card">
+          <div class="label">Regional business travel</div>
+          <p class="text-soft" style="font-size:15px;line-height:1.9">Singapore, Tokyo, Hong Kong = top 3 APAC business destinations.<br><b>78%</b> of APAC business buyers increased travel in 2024.<br>Asia-Pacific led <b>global business travel</b> spending growth.<br>Many split time between <b>Bali &amp; Dubai</b> — the "DuBali" lifestyle.</p>
+        </div>
+        <div class="card">
+          <div class="label">Audience buying power</div>
+          <div class="stat" style="font-size:36px">35%</div>
+          <p class="stat-sub" style="margin-bottom:16px">earn $100,000 – $250,000/year</p>
+          <div class="stat" style="font-size:36px">86%</div>
+          <p class="stat-sub" style="margin-bottom:16px">see themselves as entrepreneurs</p>
+          <div class="stat" style="font-size:36px">81%</div>
+          <p class="stat-sub">actively invest in business education</p>
+        </div>
+        <div class="card">
+          <div class="label">Creator-centric economy</div>
+          <div class="stat" style="font-size:36px">$250B</div>
+          <p class="stat-sub" style="margin-bottom:16px">market size (2024)</p>
+          <div class="stat" style="font-size:36px">$500B</div>
+          <p class="stat-sub">projected by 2027</p>
+        </div>
+      </div>
+      <div class="grid g2 mt-26">
+        <div class="quote">"Bali is emerging as a global center for business, travel and international connectivity." — <span style="font-style:normal">Travel and Tour World, Dec 2025</span></div>
+        <div class="quote">These are not just dreamers. They're buyers — watching these speakers daily, desperate to connect with them in person.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers" class="dark">
+    <div class="wrap">
+      <div class="kicker">The Line-Up</div>
+      <h2>Voices this audience already follows.</h2>
+      <p class="lead" style="margin-bottom:56px">A combined audience of <b style="color:#fff">4.5M+ followers</b> across the confirmed and target line-up — speakers this crowd watches every single day, and will fly in to meet.</p>
+      {SPEAKERS.map((speaker, i) => (
+        <>
+          {i > 0 && <div class="divider" />}
+          <SpeakerCard speaker={speaker} />
+        </>
+      ))}
+      <p class="footnote">*Follower counts from public trackers, July 2026 — indicative and rounded; verified figures supplied in the partner deck. Further speakers to be announced across AI, business, creativity and consciousness.</p>
+    </div>
+  </section>
+
+  <section id="freezone">
+    <div class="wrap">
+      <div class="grid g2" style="gap:52px;align-items:center">
+        <div>
+          <div class="kicker">The Bigger Play</div>
+          <h2>Backed by Bali's boldest project.</h2>
+          <p class="lead" style="margin-bottom:20px">We're in pursuit of something bigger than a conference: a collaboration with the Indonesian government and the island's new Special Economic Zone.</p>
+          <p class="text-soft" style="margin-bottom:16px"><b>Kura Kura Bali</b> — a 100-hectare innovation and financial hub on Serangan Island, being developed as Indonesia's answer to Dubai's financial districts. Focused on digital technology, creative industries, luxury tourism and international finance, with income-tax holidays, VAT exemptions and duty-free import incentives for investors.</p>
+          <p class="text-soft">Hosting this event inside the SEZ positions our partners at the front of Indonesia's push to make Bali a global business destination — alongside government, investors and the region's innovation economy.</p>
+        </div>
+        <ImgSlot label="Image — Kura Kura Bali / island aerial" minHeight="440px" />
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper)">
+    <div class="wrap">
+      <div class="kicker">The Roadmap</div>
+      <h2>Two events. One movement.</h2>
+      <div class="timeline" style="margin-top:14px">
+        <div class="card">
+          <div class="label">Step 1 — September 2026</div>
+          <h3>The Ignition · Canggu</h3>
+          <p class="text-soft" style="font-size:15.5px">A 1-day event + afterparty bringing together speakers and builders from across Bali on all three pillars. Proof of concept, first content engine, and the founding community for April. Early partners get first position here — included, not extra.</p>
+        </div>
+        <div class="card" style="border:2px solid var(--accent)">
+          <div class="label" style="color:var(--accent)">Step 2 — April 2027</div>
+          <h3>The Flagship · 2–3 days</h3>
+          <p class="text-soft" style="font-size:15.5px">700–1,000 entrepreneurs. International speaker line-up. Government and SEZ collaboration. Workshops by day, music and experiences by night — the event this region doesn't have yet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ross" class="dark">
+    <div class="wrap">
+      <div class="grid g2" style="gap:52px;align-items:center">
+        <ImgSlot label="Image — Ross Power portrait / on stage" minHeight="440px" />
+        <div>
+          <div class="kicker">The Founder</div>
+          <h2>Ross Power.</h2>
+          <p class="lead" style="margin-bottom:20px">Founder &amp; Director, AI Powered Events Indonesia. The connector between Bali's builders, the world's best teachers, and the partners who power them.</p>
+          <p class="text-soft" style="font-size:15.5px;margin-bottom:16px">Ross led 100+ design-thinking workshops at Accenture, built through blockchain startups and product leadership roles, and served as Head of Product at a NYSE-listed education company — before founding AI Powered, where he now teaches entrepreneurs to run AI-powered businesses through cohort programmes, a growing community, and hands-on education.</p>
+          <p class="text-soft" style="font-size:15.5px">Based in Bali, Ross is building the bridge between the island's 50,000-strong entrepreneur community and the global AI economy — with events as the connective tissue: educate, entertain, inspire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partner">
+    <div class="wrap text-center" style="max-width:860px">
+      <div class="kicker">Partner With Us</div>
+      <h2>Founding partners write the story with us.</h2>
+      <p class="lead" style="margin:0 auto 30px">We're selecting a small number of partners whose products this audience already runs on — AI, software, marketing, wellness and lifestyle brands. Founding partners shape the event with us from day one: stage presence, category exclusivity, content rights, and first position across both 2026 and 2027 events.</p>
+      <div class="card" style="text-align:left;margin-bottom:34px;background:var(--paper)">
+        <div class="label">Sponsorship packages</div>
+        <p class="text-soft">Full partnership tiers and packages are being finalised now — <b>coming in the next few weeks</b>. Early conversations get first pick of category exclusivity and headline positioning.</p>
+      </div>
+      <PackageTiers />
+      <div style="margin-top:48px">
+        <SponsorForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

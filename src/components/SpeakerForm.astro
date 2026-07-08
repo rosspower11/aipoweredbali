@@ -1,0 +1,114 @@
+---
+import { CONTACT_EMAIL } from '../data/site';
+
+const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_SPEAKERS ?? '';
+---
+
+<div class="card form-card" id="speaker-form-card">
+  <div class="kicker">Apply to speak</div>
+  <h2 style="font-size:clamp(24px,3vw,36px)">Share your idea.</h2>
+  <p class="lead" style="margin-bottom:28px">We're looking for voices across Human, Artificial and Divine — builders with something real to teach.</p>
+  <div id="speaker-form-message" class="form-message hidden" role="status"></div>
+  <form id="speaker-form">
+    <div class="form-honeypot" aria-hidden="true">
+      <label for="speaker-website">Website</label>
+      <input type="text" id="speaker-website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+    <div class="form-group">
+      <label for="speaker-name">Name *</label>
+      <input type="text" id="speaker-name" name="name" required />
+    </div>
+    <div class="form-group">
+      <label for="speaker-email">Email *</label>
+      <input type="email" id="speaker-email" name="email" required />
+    </div>
+    <div class="form-group">
+      <label for="speaker-socials">Socials / links</label>
+      <input type="text" id="speaker-socials" name="socials" placeholder="Instagram, LinkedIn, website…" />
+    </div>
+    <div class="form-group">
+      <label for="speaker-pillar">Which pillar? *</label>
+      <select id="speaker-pillar" name="pillar" required>
+        <option value="">Select…</option>
+        <option value="human">Human</option>
+        <option value="artificial">Artificial</option>
+        <option value="divine">Divine</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="speaker-title">Talk title *</label>
+      <input type="text" id="speaker-title" name="title" required />
+    </div>
+    <div class="form-group">
+      <label for="speaker-pitch">Pitch (2–3 sentences) *</label>
+      <textarea id="speaker-pitch" name="pitch" required placeholder="What will attendees learn? Why you?"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="speaker-video">Video link (optional)</label>
+      <input type="url" id="speaker-video" name="video" placeholder="https://" />
+    </div>
+    <button type="submit" class="btn btn-primary" id="speaker-submit">Submit application</button>
+    <p id="speaker-fallback" class="text-soft" style="margin-top:16px;font-size:14px;display:none">
+      Or email <a href={`mailto:${CONTACT_EMAIL}?subject=Speaker%20Application%20—%20AI%20Powered%20Bali`} style="color:var(--accent)">{CONTACT_EMAIL}</a>
+    </p>
+  </form>
+</div>
+
+<script define:vars={{ webhookUrl, contactEmail: CONTACT_EMAIL }}>
+  const form = document.getElementById('speaker-form');
+  const messageEl = document.getElementById('speaker-form-message');
+  const submitBtn = document.getElementById('speaker-submit');
+  const fallbackEl = document.getElementById('speaker-fallback');
+
+  if (!webhookUrl && fallbackEl) {
+    fallbackEl.style.display = 'block';
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    if (fd.get('website')) return;
+
+    if (!webhookUrl) {
+      messageEl.textContent = `Form temporarily unavailable. Please email ${contactEmail} directly.`;
+      messageEl.className = 'form-message error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    messageEl.className = 'form-message hidden';
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fd.get('name'),
+          email: fd.get('email'),
+          socials: fd.get('socials') || '',
+          pillar: fd.get('pillar'),
+          title: fd.get('title'),
+          pitch: fd.get('pitch'),
+          video: fd.get('video') || '',
+          source: 'aipoweredbali.com/speakers',
+          tag: 'speaker-application',
+        }),
+      });
+
+      if (res.ok) {
+        messageEl.textContent = 'Application received — thank you.';
+        messageEl.className = 'form-message success';
+        form.reset();
+      } else {
+        throw new Error('Request failed');
+      }
+    } catch {
+      messageEl.textContent = `Something went wrong. Please email ${contactEmail} directly.`;
+      messageEl.className = 'form-message error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit application';
+    }
+  });
+</script>

@@ -1,0 +1,38 @@
+---
+import type { Speaker } from '../data/speakers';
+import ImgSlot from './ImgSlot.astro';
+
+interface Props {
+  speaker: Speaker;
+  showBio?: boolean;
+}
+
+const { speaker, showBio = true } = Astro.props;
+const statusLabel =
+  speaker.status === 'confirmed' ? '✓ Confirmed' : '◌ In discussion';
+const statusClass =
+  speaker.status === 'confirmed' ? 'pill-green' : 'pill-amber';
+---
+
+<div class="speaker">
+  <ImgSlot label={speaker.imageLabel} src={speaker.imageSrc} alt={speaker.name} />
+  <div>
+    <span class={`pill ${statusClass}`}>{statusLabel}</span>
+    <h3>{speaker.name}</h3>
+    <p class="role">{speaker.role}</p>
+    {showBio && (
+      <p class="text-soft" style="font-size:15.5px">{speaker.bio}</p>
+    )}
+    <div class="socials">
+      {speaker.socials.map((s) => (
+        <div class="social">
+          <div class="n">{s.count}</div>
+          <div class="p">{s.platform}</div>
+        </div>
+      ))}
+    </div>
+    <div class="reach">
+      <span class="big">{speaker.reach}</span> combined social audience*
+    </div>
+  </div>
+</div>

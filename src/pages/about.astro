@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ImgSlot from '../components/ImgSlot.astro';
+---
+
+<BaseLayout
+  title="About · AI Powered Events Indonesia"
+  description="Founder Ross Power and AI Powered Events Indonesia — building Bali's leading in-person AI community. Human · Artificial · Divine."
+  ctaHref="/waitlist"
+  ctaLabel="Join waitlist"
+>
+  <header class="hero" style="padding-bottom:64px">
+    <div class="wrap">
+      <div class="kicker">About</div>
+      <h1>Become AI powered.<br>Remain human.</h1>
+      <p class="lead">AI Powered Events Indonesia is building Bali's leading in-person AI community — educating, entertaining and inspiring entrepreneurs through world-class gatherings.</p>
+    </div>
+  </header>
+
+  <section style="padding-top:0;background:var(--paper)">
+    <div class="wrap">
+      <div class="grid g2" style="gap:52px;align-items:center">
+        <ImgSlot label="Image — Ross Power portrait / on stage" minHeight="440px" />
+        <div>
+          <div class="kicker">The Founder</div>
+          <h2>Ross Power.</h2>
+          <p class="lead" style="margin-bottom:20px">Founder &amp; Director, AI Powered Events Indonesia. The connector between Bali's builders, the world's best teachers, and the partners who power them.</p>
+          <p class="text-soft" style="font-size:15.5px;margin-bottom:16px">Ross led 100+ design-thinking workshops at Accenture, built through blockchain startups and product leadership roles, and served as Head of Product at a NYSE-listed education company — before founding AI Powered, where he now teaches entrepreneurs to run AI-powered businesses through cohort programmes (including Claude Programme 3.0), a growing community, and hands-on education.</p>
+          <p class="text-soft" style="font-size:15.5px">Based in Bali, Ross is building the bridge between the island's 50,000-strong entrepreneur community and the global AI economy — with events as the connective tissue: educate, entertain, inspire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The Entity</div>
+      <h2>AI Powered Events Indonesia.</h2>
+      <p class="lead mb-44">We're building Bali's leading in-person AI community brand — events that blend practical business education with human connection and conscious living.</p>
+      <div class="grid g3">
+        <div class="card">
+          <div class="pillar-icon" style="background:#fdeee2">🫂</div>
+          <h3>Human</h3>
+          <p class="text-soft">Connection is the foundation. Offline, in-person experiences — music, arts and creativity woven through every gathering. Real rooms, real relationships. In a world of infinite content, the scarce resource is presence. Our events are designed so people leave with peers they actually know, not just contacts they collected.</p>
+        </div>
+        <div class="card">
+          <div class="pillar-icon" style="background:var(--accent-soft)">⚡</div>
+          <h3>Artificial</h3>
+          <p class="text-soft">AI is handing back the most valuable asset an entrepreneur has: time. We teach the practical power of AI to take time back, build leaner businesses, and create a more meaningful life outside the screen. Not theory — tactics. Not hype — leverage.</p>
+        </div>
+        <div class="card">
+          <div class="pillar-icon" style="background:#f3ead8">✨</div>
+          <h3>Divine</h3>
+          <p class="text-soft">Spiritual connectedness and consciousness — the dimension Bali does better than anywhere on earth. Our events honour the island's unique energy: the space to think clearly, connect deeply, and return home changed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <div class="grid g2" style="gap:52px;align-items:center">
+        <div>
+          <div class="kicker">The Bigger Play</div>
+          <h2>Backed by Bali's boldest project.</h2>
+          <p class="lead" style="margin-bottom:20px">We're in pursuit of something bigger than a conference: a collaboration with the Indonesian government and the island's new Special Economic Zone.</p>
+          <p class="text-soft" style="margin-bottom:16px"><b style="color:#fff">Kura Kura Bali</b> — a 100-hectare innovation and financial hub on Serangan Island, being developed as Indonesia's answer to Dubai's financial districts. Focused on digital technology, creative industries, luxury tourism and international finance, with income-tax holidays, VAT exemptions and duty-free import incentives for investors.</p>
+          <p class="text-soft">Hosting our flagship event inside the SEZ positions AI Powered Bali at the front of Indonesia's push to make Bali a global business destination — alongside government, investors and the region's innovation economy.</p>
+        </div>
+        <ImgSlot label="Image — Kura Kura Bali / island aerial" minHeight="440px" />
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper)">
+    <div class="wrap">
+      <div class="kicker">The Roadmap</div>
+      <h2>Two events. One movement.</h2>
+      <div class="timeline" style="margin-top:14px">
+        <div class="card">
+          <div class="label">Step 1 — September 2026</div>
+          <h3>The Ignition · Canggu</h3>
+          <p class="text-soft" style="font-size:15.5px">A 1-day event + afterparty bringing together speakers and builders from across Bali on all three pillars. Proof of concept, first content engine, and the founding community for April.</p>
+        </div>
+        <div class="card" style="border:2px solid var(--accent)">
+          <div class="label" style="color:var(--accent)">Step 2 — April 2027</div>
+          <h3>The Flagship · 2–3 days</h3>
+          <p class="text-soft" style="font-size:15.5px">700–1,000 entrepreneurs. International speaker line-up. Government and SEZ collaboration. Workshops by day, music and experiences by night.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap text-center" style="max-width:720px">
+      <div class="kicker">Join us</div>
+      <h2>Be part of the movement.</h2>
+      <p class="lead" style="margin:0 auto 30px">Whether you're attending, speaking or partnering — we'd love to hear from you.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-primary" href="/waitlist">Join the waitlist</a>
+        <a class="btn btn-dark" href="/sponsors">Partner with us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

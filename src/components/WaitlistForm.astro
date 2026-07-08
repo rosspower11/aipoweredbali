@@ -1,0 +1,78 @@
+---
+const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_WAITLIST ?? '';
+const contactEmail = 'ross@aipowered.xyz';
+---
+
+<div id="waitlist-form-message" class="form-message hidden" role="status"></div>
+<form id="waitlist-form" style="text-align:left">
+  <div class="form-honeypot" aria-hidden="true">
+    <label for="waitlist-website">Website</label>
+    <input type="text" id="waitlist-website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+  <div class="form-group">
+    <label for="waitlist-firstname">First name *</label>
+    <input type="text" id="waitlist-firstname" name="firstName" required />
+  </div>
+  <div class="form-group">
+    <label for="waitlist-email">Email *</label>
+    <input type="email" id="waitlist-email" name="email" required />
+  </div>
+  <button type="submit" class="btn btn-primary" id="waitlist-submit" style="width:100%">Join the waitlist</button>
+  <p id="waitlist-fallback" style="margin-top:16px;font-size:14px;color:#8f8f98;display:none">
+    Or email <a href={`mailto:${contactEmail}?subject=Waitlist%20—%20AI%20Powered%20Bali%20April%202027`} style="color:var(--accent)">{contactEmail}</a>
+  </p>
+</form>
+
+<script define:vars={{ webhookUrl, contactEmail }}>
+  const form = document.getElementById('waitlist-form');
+  const messageEl = document.getElementById('waitlist-form-message');
+  const submitBtn = document.getElementById('waitlist-submit');
+  const fallbackEl = document.getElementById('waitlist-fallback');
+
+  if (!webhookUrl && fallbackEl) {
+    fallbackEl.style.display = 'block';
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    if (fd.get('website')) return;
+
+    if (!webhookUrl) {
+      messageEl.textContent = `Form temporarily unavailable. Please email ${contactEmail} directly.`;
+      messageEl.className = 'form-message error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Joining…';
+    messageEl.className = 'form-message hidden';
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: fd.get('firstName'),
+          email: fd.get('email'),
+          source: 'aipoweredbali.com/waitlist',
+          tag: 'waitlist-april-2027',
+        }),
+      });
+
+      if (res.ok) {
+        messageEl.textContent = 'You\'re on the list — we\'ll be in touch.';
+        messageEl.className = 'form-message success';
+        form.reset();
+      } else {
+        throw new Error('Request failed');
+      }
+    } catch {
+      messageEl.textContent = `Something went wrong. Please email ${contactEmail} directly.`;
+      messageEl.className = 'form-message error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Join the waitlist';
+    }
+  });
+</script>

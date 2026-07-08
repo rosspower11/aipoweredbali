@@ -1,0 +1,108 @@
+---
+import { CONTACT_EMAIL } from '../data/site';
+
+const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_SPONSORS ?? '';
+---
+
+<div class="card form-card" id="sponsor-form-card">
+  <div class="label">Start the conversation</div>
+  <div id="sponsor-form-message" class="form-message hidden" role="status"></div>
+  <form id="sponsor-form">
+    <div class="form-honeypot" aria-hidden="true">
+      <label for="sponsor-website">Website</label>
+      <input type="text" id="sponsor-website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+    <div class="form-group">
+      <label for="sponsor-name">Name *</label>
+      <input type="text" id="sponsor-name" name="name" required />
+    </div>
+    <div class="form-group">
+      <label for="sponsor-company">Company *</label>
+      <input type="text" id="sponsor-company" name="company" required />
+    </div>
+    <div class="form-group">
+      <label for="sponsor-email">Email *</label>
+      <input type="email" id="sponsor-email" name="email" required />
+    </div>
+    <div class="form-group">
+      <label for="sponsor-phone">Phone</label>
+      <input type="tel" id="sponsor-phone" name="phone" />
+    </div>
+    <div class="form-group">
+      <label for="sponsor-interest">What kind of partnership interests you? *</label>
+      <select id="sponsor-interest" name="interest" required>
+        <option value="">Select…</option>
+        <option value="headline">Headline sponsor</option>
+        <option value="category">Category sponsor</option>
+        <option value="experience">Experience partner</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="sponsor-message">Message</label>
+      <textarea id="sponsor-message" name="message" placeholder="Tell us about your brand and what you're looking for…"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="sponsor-submit">Send enquiry</button>
+    <p id="sponsor-fallback" class="text-soft" style="margin-top:16px;font-size:14px;display:none">
+      Or email us directly at <a href={`mailto:${CONTACT_EMAIL}?subject=Partnership%20—%20AI%20Powered%20Bali`} style="color:var(--accent)">{CONTACT_EMAIL}</a>
+    </p>
+  </form>
+</div>
+
+<script define:vars={{ webhookUrl, contactEmail: CONTACT_EMAIL }}>
+  const form = document.getElementById('sponsor-form');
+  const messageEl = document.getElementById('sponsor-form-message');
+  const submitBtn = document.getElementById('sponsor-submit');
+  const fallbackEl = document.getElementById('sponsor-fallback');
+
+  if (!webhookUrl && fallbackEl) {
+    fallbackEl.style.display = 'block';
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    if (fd.get('website')) return;
+
+    if (!webhookUrl) {
+      messageEl.textContent = `Form temporarily unavailable. Please email ${contactEmail} directly.`;
+      messageEl.className = 'form-message error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    messageEl.className = 'form-message hidden';
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fd.get('name'),
+          company: fd.get('company'),
+          email: fd.get('email'),
+          phone: fd.get('phone') || '',
+          interest: fd.get('interest'),
+          message: fd.get('message') || '',
+          source: 'aipoweredbali.com/sponsors',
+          tag: 'sponsor-lead',
+        }),
+      });
+
+      if (res.ok) {
+        messageEl.textContent = 'Thank you — we\'ll be in touch shortly.';
+        messageEl.className = 'form-message success';
+        form.reset();
+      } else {
+        throw new Error('Request failed');
+      }
+    } catch {
+      messageEl.textContent = `Something went wrong. Please email ${contactEmail} directly.`;
+      messageEl.className = 'form-message error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send enquiry';
+    }
+  });
+</script>

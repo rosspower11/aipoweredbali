@@ -1,0 +1,38 @@
+---
+import { NAV_LINKS } from '../data/site';
+
+interface Props {
+  ctaHref?: string;
+  ctaLabel?: string;
+  minimal?: boolean;
+}
+
+const {
+  ctaHref = '/waitlist',
+  ctaLabel = 'Join waitlist',
+  minimal = false,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">AI&nbsp;POWERED <span>BALI</span></a>
+    {!minimal && (
+      <>
+        <div class="nav-links">
+          {NAV_LINKS.map((link) => (
+            <a
+              href={link.href}
+              class:list={{ active: currentPath === link.href }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+        <a class="nav-cta" href={ctaHref}>{ctaLabel}</a>
+      </>
+    )}
+  </div>
+</nav>
