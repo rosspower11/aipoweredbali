@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import WaitlistForm from '../components/WaitlistForm.astro';
 import { SITE_NAME } from '../data/site';
-import { LOGO_WHITE } from '../data/cdn';
+import { FAVICON, LOGO_WHITE } from '../data/cdn';
 ---
 
 <!doctype html>
@@ -15,7 +15,8 @@ import { LOGO_WHITE } from '../data/cdn';
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={`Join the Waitlist · ${SITE_NAME}`} />
     <meta property="og:description" content="April 2027 · Bali · 700 to 1,000 entrepreneurs. Daniel Priestley confirmed." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href={FAVICON} />
+    <link rel="apple-touch-icon" href={FAVICON} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
