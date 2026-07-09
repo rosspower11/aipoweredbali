@@ -1310,23 +1310,25 @@ p.lead,
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 28px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-dark);
+  padding: 24px 32px;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   min-width: min(280px, 42vw);
   min-height: 100px;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
 .powered-by-logo:hover {
-  border-color: var(--accent-border);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
 }
 
 .powered-by-logo img {
-  max-width: 200px;
-  max-height: 56px;
+  max-width: 220px;
+  max-height: 64px;
   width: auto;
   height: auto;
   object-fit: contain;
