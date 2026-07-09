@@ -11,10 +11,10 @@ import { FAVICON, LOGO_WHITE } from '../data/cdn';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join the Waitlist · {SITE_NAME}</title>
-    <meta name="description" content="Join the waitlist for AI Powered Bali, April 2027. 700 to 1,000 entrepreneurs. Daniel Priestley confirmed." />
+    <meta name="description" content="Join the waitlist for AI Powered Bali. Tell us who you want to see in Bali. April 2027 · 700 to 1,000 entrepreneurs." />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={`Join the Waitlist · ${SITE_NAME}`} />
-    <meta property="og:description" content="April 2027 · Bali · 700 to 1,000 entrepreneurs. Daniel Priestley confirmed." />
+    <meta property="og:description" content="Who would you like to see in Bali? Join the waitlist and shape the line-up." />
     <link rel="icon" href={FAVICON} />
     <link rel="apple-touch-icon" href={FAVICON} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,15 +32,18 @@ import { FAVICON, LOGO_WHITE } from '../data/cdn';
         </a>
       </header>
       <main class="waitlist-main">
-        <div class="waitlist-inner">
+        <div class="waitlist-inner waitlist-inner--wide">
           <p class="eyebrow eyebrow-light">April 2027 · Bali</p>
-          <h1>The premier entrepreneur conference for the builders of the AI era.</h1>
-          <p class="subline">April 2027 · Bali · 700 to 1,000 entrepreneurs</p>
+          <h1>Who would <em>you</em> like to see in Bali?</h1>
+          <p class="subline">
+            We're curating this event based on who we hear people want to see.
+            Join the waitlist, enter names, and share why.
+          </p>
           <WaitlistForm />
           <div class="waitlist-proof">
             <span>700 to 1,000 entrepreneurs</span>
             <span>Priestley confirmed</span>
-            <span>April 2027</span>
+            <span>Your voice shapes the line-up</span>
           </div>
           <p style="margin-top:32px">
             <a class="btn-outline" href="/sponsors">Become a sponsor</a>

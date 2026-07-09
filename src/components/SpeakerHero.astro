@@ -1,4 +1,6 @@
 ---
+import { SPEAKER_IMAGES as SPEAKER_PHOTOS } from '../data/assets';
+
 interface Badge {
   mono?: string;
   text: string;
@@ -7,7 +9,6 @@ interface Badge {
 interface Cta {
   href: string;
   label: string;
-  waitlistModal?: boolean;
 }
 
 interface Props {
@@ -17,9 +18,6 @@ interface Props {
   badges?: Badge[];
   primaryCta?: Cta;
   secondaryCta?: Cta;
-  compact?: boolean;
-  bgImage?: string;
-  bgPosition?: string;
 }
 
 const {
@@ -27,20 +25,27 @@ const {
   title,
   lead,
   badges = [],
-  primaryCta = { href: '#waitlist', label: 'Join waitlist', waitlistModal: true },
+  primaryCta = { href: '/waitlist', label: 'Join waitlist' },
   secondaryCta = { href: '/sponsors', label: 'Become a sponsor' },
-  compact = false,
-  bgImage,
-  bgPosition = 'center',
 } = Astro.props;
 
-const heroStyle = bgImage
-  ? `background-image: linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.78) 50%, var(--bg-black) 100%), url('${bgImage}'); background-position: ${bgPosition};`
-  : undefined;
+const speakers = [
+  { src: SPEAKER_PHOTOS['daniel-priestley'], name: 'Daniel Priestley', pos: 'left' },
+  { src: SPEAKER_PHOTOS['dan-koe'], name: 'Dan Koe', pos: 'center' },
+  { src: SPEAKER_PHOTOS['tom-noske'], name: 'Tom Noske', pos: 'right' },
+];
 ---
 
-<header class:list={['hero-bleed', { 'hero-bleed--compact': compact, 'hero-bleed--photo': !!bgImage }]} style={heroStyle}>
-  <div class="hero-bleed-inner container">
+<header class="hero-speakers">
+  <div class="hero-speakers-bg" aria-hidden="true">
+    {speakers.map((s) => (
+      <div class:list={['hero-speakers-panel', `hero-speakers-panel--${s.pos}`]}>
+        <img src={s.src} alt="" loading="eager" decoding="async" />
+      </div>
+    ))}
+    <div class="hero-speakers-scrim" />
+  </div>
+  <div class="hero-speakers-inner container">
     <p class="eyebrow eyebrow-light">{eyebrow}</p>
     <h1 set:html={title} />
     {lead && <p class="hero-sub">{lead}</p>}
@@ -56,15 +61,9 @@ const heroStyle = bgImage
     )}
     {(primaryCta || secondaryCta) && (
       <div class="hero-ctas">
-        {primaryCta && (
-          primaryCta.waitlistModal ? (
-            <a class="btn-white" href="#waitlist" data-waitlist-open>{primaryCta.label}</a>
-          ) : (
-            <a class="btn-white" href={primaryCta.href}>{primaryCta.label}</a>
-          )
-        )}
+        {primaryCta && <a class="btn-white" href={primaryCta.href}>{primaryCta.label}</a>}
         {secondaryCta && (
-          secondaryCta.waitlistModal || secondaryCta.href === '#waitlist' ? (
+          secondaryCta.href === '#waitlist' ? (
             <a class="btn-outline" href="#waitlist" data-waitlist-open>{secondaryCta.label}</a>
           ) : (
             <a class="btn-outline" href={secondaryCta.href}>{secondaryCta.label}</a>

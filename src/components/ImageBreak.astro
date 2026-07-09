@@ -1,0 +1,27 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  label?: string;
+  height?: string;
+  align?: 'center' | 'top' | 'bottom';
+  dark?: boolean;
+}
+
+const {
+  src,
+  alt,
+  label,
+  height = 'min(52vh, 520px)',
+  align = 'center',
+  dark = true,
+} = Astro.props;
+---
+
+<figure
+  class:list={['image-break', { 'image-break--dark': dark }]}
+  style={`--image-break-height: ${height}; --image-break-position: ${align}`}
+>
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  {label && <figcaption class="image-break-caption">{label}</figcaption>}
+</figure>

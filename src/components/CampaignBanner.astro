@@ -1,0 +1,20 @@
+---
+const items = [
+  'July 2026 · Official campaign live',
+  'Looking for partners · venues · collaborators',
+  'Speaker outreach underway',
+  'Sponsor conversations open',
+  'September 2026 · 1-day Bali ignition',
+  'April 2027 · 700 to 1,000 seats',
+  'Be part of the greatest creator event Bali has seen',
+];
+const track = [...items, ...items];
+---
+
+<div class="campaign-banner" aria-hidden="true">
+  <div class="campaign-banner-track">
+    {track.map((item) => (
+      <span class="campaign-banner-item">{item}</span>
+    ))}
+  </div>
+</div>

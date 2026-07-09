@@ -1,43 +1,95 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import ImgSlot from '../components/ImgSlot.astro';
+import CampaignBanner from '../components/CampaignBanner.astro';
+import PoweredBy from '../components/PoweredBy.astro';
+import WhoWeMissing from '../components/WhoWeMissing.astro';
+import WaitlistPromo from '../components/WaitlistPromo.astro';
+import BuildWithUs from '../components/BuildWithUs.astro';
+import SponsorTargetMarquee from '../components/SponsorTargetMarquee.astro';
 import SpeakerTeaserStrip from '../components/SpeakerTeaserStrip.astro';
+import FounderSection from '../components/FounderSection.astro';
+import CampaignRoadmap from '../components/CampaignRoadmap.astro';
+import ImageBreak from '../components/ImageBreak.astro';
+import BaliGallery from '../components/BaliGallery.astro';
+import {
+  BALI_HERO,
+  BALI_MOUNTAINS,
+  BALI_NATURE,
+  BALI_SURF,
+  MERU_HOTEL,
+  MERU_HOTEL_2,
+} from '../data/assets';
 ---
 
 <BaseLayout
-  title="The Premier Entrepreneur Conference for the AI Era"
-  description="A 2 to 3 day immersive conference for 700 to 1,000 entrepreneurs in Bali, April 2027. Daniel Priestley confirmed. Become AI powered. Remain human."
+  title="The Best AI Gathering for Creator-Entrepreneurs in Bali"
+  description="Be part of the best AI gathering for creator-entrepreneurs Bali has ever witnessed. April 2027 flagship. Daniel Priestley confirmed. Looking for partners, venues, sponsors and speakers."
 >
   <Hero
-    eyebrow="Bali · April 2027 · AI Powered Events Indonesia"
-    title="The premier entrepreneur conference for the builders of the <strong>AI era</strong>."
-    lead="A 2 to 3 day immersive, workshop-style event for 700 to 1,000 entrepreneurs. AI leverage, human connection, and conscious living in the world's most inspiring place to gather."
+    eyebrow="Bali · April 2027 · Building in public from July 2026"
+    title="Be part of the best AI gathering for <strong>creator-entrepreneurs</strong> Bali has ever witnessed."
+    lead="A 2 to 3 day immersive event for 700 to 1,000 builders, creators and operators. We're actively looking for partners, venues, collaborators, sponsors and speakers. This is your opportunity to get in early."
     badges={[
       { mono: 'Speaker', text: 'Daniel Priestley confirmed' },
-      { mono: 'Date', text: 'April 2027 · Bali' },
+      { mono: 'Status', text: 'In progress · outreach live' },
       { mono: 'Line-up', text: 'Dan Koe and Tom Noske in discussion' },
     ]}
-    primaryCta={{ href: '/waitlist', label: 'Join waitlist' }}
-    secondaryCta={{ href: '/sponsors', label: 'Become a sponsor' }}
+    primaryCta={{ href: '#waitlist', label: 'Join waitlist', waitlistModal: true }}
+    secondaryCta={{ href: '/sponsors', label: 'Partner with us' }}
+    bgImage={BALI_HERO}
+    bgPosition="center 40%"
   />
+
+  <CampaignBanner />
+
+  <PoweredBy />
+
+  <WhoWeMissing />
+
+  <BuildWithUs variant="accent" />
+
+  <ImageBreak src={BALI_SURF} alt="Surf and coastline in Bali" label="Bali · April 2027" height="min(44vh, 440px)" />
+
+  <SponsorTargetMarquee />
 
   <section id="event" class="section-light" style="padding-top:0">
     <div class="wrap">
       <div class="facts">
         <div class="card"><div class="label">What</div><p>2 to 3 day immersive, workshop-style conference. Practical. Tactical. For builders and creators.</p></div>
-        <div class="card"><div class="label">When</div><p><b>April 2027.</b> Teaser event September 2026 in Canggu. Proof of concept and community ignition.</p></div>
-        <div class="card"><div class="label">Where</div><p>Bali, Indonesia. Targeting the Kura Kura Bali Special Economic Zone, in collaboration with government partners.</p></div>
+        <div class="card"><div class="label">When</div><p><b>April 2027.</b> September 2026 ignition in Canggu (300 seats). Sponsor and speaker campaign live from July.</p></div>
+        <div class="card"><div class="label">Where</div><p>Bali, Indonesia. Targeting the Kura Kura Bali Special Economic Zone, with venue partners across the island.</p></div>
         <div class="card"><div class="label">Who</div><p>700 to 1,000 paying entrepreneurs: founders, creators, coaches and operators. Builders, not browsers.</p></div>
+      </div>
+      <div class="venue-card">
+        <div class="venue-card-photo">
+          <img src={MERU_HOTEL} alt="The Meru Sanur, Bali" loading="lazy" />
+        </div>
+        <div class="venue-card-copy">
+          <p class="label">Venues · In conversation</p>
+          <h3 style="margin-bottom:12px">We're scouting Bali's best spaces.</h3>
+          <p class="text-soft" style="font-size:15px;line-height:1.75">
+            From premium resorts like The Meru Sanur to convention-grade facilities and creative campuses.
+            If you operate a venue or hospitality brand in Bali, we want to hear from you.
+          </p>
+          <p style="margin-top:16px"><a href="/sponsors#partner" class="btn-dark" style="display:inline-block;padding:12px 24px;font-size:12px">Venue & partner enquiry</a></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="vision" class="section-light" style="padding-top:64px">
+  <section id="vision" class="section-dark" style="padding-top:64px">
     <div class="wrap">
-      <p class="kicker">The Vision</p>
-      <h2>Become AI powered.<br>Remain human.</h2>
-      <p class="lead mb-44">AI is handing back the most valuable asset an entrepreneur has: time. This event is about what you do with it. Every experience blends three threads so people leave sharper in business, richer in connection, and more conscious in how they live.</p>
+      <div class="vision-with-photo">
+        <div>
+          <p class="kicker">The Vision</p>
+          <h2>Become AI powered.<br>Remain human.</h2>
+          <p class="lead">AI is handing back the most valuable asset an entrepreneur has: time. This event is about what you do with it.</p>
+        </div>
+        <div class="vision-photo">
+          <img src={BALI_NATURE} alt="Bali jungle and nature" loading="lazy" />
+        </div>
+      </div>
       <div class="grid g3">
         <div class="card">
           <p class="pillar-num">01 · Human</p>
@@ -55,14 +107,28 @@ import SpeakerTeaserStrip from '../components/SpeakerTeaserStrip.astro';
           <p class="text-soft">Consciousness. Spiritual connectedness and presence. The dimension Bali does better than anywhere on earth.</p>
         </div>
       </div>
-      <div class="quote light-quote" style="margin-top:26px">Educate. Entertain. Inspire. One event, three threads. Curated for the crowd, not for the sponsors' logos.</div>
+      <div class="quote" style="margin-top:26px">Educate. Entertain. Inspire. One event, three threads. Curated for the crowd, not for the sponsors' logos.</div>
     </div>
   </section>
+
+  <SpeakerTeaserStrip dark />
+
+  <WaitlistPromo />
+
+  <ImageBreak src={BALI_MOUNTAINS} alt="Bali mountains and rice terraces" label="Where builders gather" align="center" />
+
+  <CampaignRoadmap />
+
+  <BuildWithUs variant="dark" />
+
+  <FounderSection />
 
   <section id="why-bali" class="section-light">
     <div class="wrap">
       <div class="grid g2" style="align-items:center;gap:52px">
-        <ImgSlot label="Bali landscape" minHeight="440px" />
+        <div class="img-slot" style="min-height:440px;border-radius:12px;overflow:hidden">
+          <img src={BALI_MOUNTAINS} alt="Bali landscape" loading="lazy" />
+        </div>
         <div>
           <p class="kicker">Why Bali</p>
           <h2>What people think Bali is.</h2>
@@ -114,13 +180,11 @@ import SpeakerTeaserStrip from '../components/SpeakerTeaserStrip.astro';
           <div class="quote">"As a teenager, I went to Bali a lot, which is why, when we bought Necker Island, we made it like a mini Bali."<br><b style="font-style:normal;display:block;margin-top:10px">Richard Branson</b></div>
         </div>
       </div>
-      <div class="grid g3 mt-26">
-        <ImgSlot label="Luxury resort venue" minHeight="220px" />
-        <ImgSlot label="Conference stage" minHeight="220px" />
-        <ImgSlot label="Bali landscape" minHeight="220px" />
-      </div>
+      <BaliGallery title="The island" />
     </div>
   </section>
+
+  <ImageBreak src={MERU_HOTEL_2} alt="Premium Bali venue" label="Venue partners welcome" height="min(40vh, 400px)" align="bottom" />
 
   <section class="section-light">
     <div class="wrap">
@@ -147,35 +211,16 @@ import SpeakerTeaserStrip from '../components/SpeakerTeaserStrip.astro';
     </div>
   </section>
 
-  <section class="section-light">
-    <div class="wrap">
-      <p class="kicker">The Roadmap</p>
-      <h2>Two events. One movement.</h2>
-      <div class="timeline" style="margin-top:14px">
-        <div class="card">
-          <div class="label">Step 1 · September 2026</div>
-          <h3>The Ignition · Canggu</h3>
-          <p class="text-soft" style="font-size:15.5px">A 1-day event and afterparty bringing together speakers and builders from across Bali on all three pillars. Proof of concept, first content engine, and the founding community for April.</p>
-        </div>
-        <div class="card featured">
-          <div class="label" style="color:var(--accent)">Step 2 · April 2027</div>
-          <h3>The Flagship · 2 to 3 days</h3>
-          <p class="text-soft" style="font-size:15.5px">700 to 1,000 entrepreneurs. International speaker line-up. Government and SEZ collaboration. Workshops by day, music and experiences by night. The event this region doesn't have yet.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <SpeakerTeaserStrip dark />
+  <SponsorTargetMarquee compact />
 
   <section class="section-dark">
     <div class="wrap text-center" style="max-width:720px">
       <p class="kicker">April 2027</p>
       <h2>Be first in the room.</h2>
-      <p class="lead" style="margin:0 auto 30px">Join the waitlist for early access to tickets, speaker announcements and founding community events.</p>
+      <p class="lead" style="margin:0 auto 30px">Join the waitlist for early access to tickets, speaker announcements and founding community events. Or reach out if you want to help build it.</p>
       <div class="hero-ctas" style="justify-content:center">
-        <a class="btn-white" href="/waitlist">Join waitlist</a>
-        <a class="btn-outline" href="/sponsors">Become a sponsor</a>
+        <button type="button" class="btn-white" data-waitlist-open>Join waitlist</button>
+        <a class="btn-outline" href="/sponsors">Partner with us</a>
       </div>
     </div>
   </section>

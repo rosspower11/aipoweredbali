@@ -1,0 +1,51 @@
+---
+import { ROSS_HEADSHOT, FOUNDER_CAROUSEL_PHOTOS } from '../data/assets';
+import PhotoCarousel from './PhotoCarousel.astro';
+---
+
+<section id="founder" class="section-dark founder-section">
+  <div class="wrap">
+    <div class="founder-layout">
+      <div class="founder-photo-col">
+        <div class="founder-photo">
+          <img src={ROSS_HEADSHOT} alt="Ross Power" loading="lazy" decoding="async" />
+        </div>
+        <p class="founder-role">Founder · AI Powered Events Indonesia</p>
+      </div>
+      <div class="founder-copy">
+        <p class="kicker">Your host</p>
+        <h2>Meet Ross.</h2>
+        <p class="text-soft">
+          I have spent years running live workshops and events for entrepreneurs, creators and operators.
+          At Accenture I facilitated more than 100 design-thinking sessions. Since then I have led product teams,
+          built education programmes, and taught thousands of people how to use AI in their businesses.
+        </p>
+        <p class="text-soft">
+          AI Powered Bali is the event I wish existed when I moved here: world-class speakers, practical workshops,
+          and the energy of Bali woven through every session. We are officially out talking to speakers and sponsors
+          from July 2026. This is not a pitch deck. It is a campaign to build something real.
+        </p>
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <span class="founder-stat-n">100+</span>
+            <span class="founder-stat-l">Workshops run</span>
+          </div>
+          <div class="founder-stat">
+            <span class="founder-stat-n">1,000+</span>
+            <span class="founder-stat-l">People taught live</span>
+          </div>
+          <div class="founder-stat">
+            <span class="founder-stat-n">July '26</span>
+            <span class="founder-stat-l">Campaign live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <PhotoCarousel
+    label="On stage · live workshops & events"
+    images={FOUNDER_CAROUSEL_PHOTOS}
+    variant="double"
+    dark
+  />
+</section>

@@ -12,8 +12,11 @@ const { dark = false } = Astro.props;
 <section class:list={[{ dark: dark, 'section-dark': dark }, { 'section-light': !dark }]}>
   <div class="wrap">
     <p class="kicker">The Line-Up</p>
-    <h2>Voices you'll meet in Bali.</h2>
-    <p class="lead mb-44">Confirmed and in-discussion speakers, with more announcements coming.</p>
+    <h2>Voices we're going after.</h2>
+    <p class="lead mb-44">
+      Official speaker campaign live from July 2026. Daniel Priestley is confirmed.
+      Dan Koe and Tom Noske are in discussion. The rest are targets we are actively pursuing.
+    </p>
     <div class="speaker-teaser-grid">
       {FEATURED_SPEAKERS.map((speaker) => (
         <a href="/speakers" class="speaker-teaser">

@@ -2,6 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import ImgSlot from '../components/ImgSlot.astro';
+import CampaignRoadmap from '../components/CampaignRoadmap.astro';
+import PhotoCarousel from '../components/PhotoCarousel.astro';
+import BuildWithUs from '../components/BuildWithUs.astro';
+import ImageBreak from '../components/ImageBreak.astro';
+import { ROSS_HEADSHOT, FOUNDER_CAROUSEL_PHOTOS, BALI_MOUNTAINS } from '../data/assets';
 ---
 
 <BaseLayout
@@ -9,18 +14,22 @@ import ImgSlot from '../components/ImgSlot.astro';
   description="Founder Ross Power and AI Powered Events Indonesia. Building Bali's leading in-person AI community. Human, Artificial, Divine."
 >
   <Hero
-    eyebrow="About"
+    eyebrow="About · Building in public"
     title="Become AI powered.<br>Remain human."
-    lead="AI Powered Events Indonesia is building Bali's leading in-person AI community, educating, entertaining and inspiring entrepreneurs through world-class gatherings."
-    primaryCta={{ href: '/waitlist', label: 'Join waitlist' }}
-    secondaryCta={{ href: '/sponsors', label: 'Become a sponsor' }}
+    lead="AI Powered Events Indonesia is building Bali's leading in-person AI community. We're looking for partners, venues, collaborators, sponsors and speakers to help create the greatest gathering for creators and entrepreneurs the island has ever seen."
+    primaryCta={{ href: '#waitlist', label: 'Join waitlist', waitlistModal: true }}
+    secondaryCta={{ href: '/sponsors', label: 'Partner with us' }}
     compact
+    bgImage={BALI_MOUNTAINS}
+    bgPosition="center 35%"
   />
+
+  <BuildWithUs variant="light" />
 
   <section class="section-light" style="padding-top:0">
     <div class="wrap">
       <div class="grid g2" style="gap:52px;align-items:center">
-        <ImgSlot label="Ross Power portrait" minHeight="440px" />
+        <ImgSlot label="Ross Power portrait" minHeight="440px" src={ROSS_HEADSHOT} alt="Ross Power" />
         <div>
           <p class="kicker">The Founder</p>
           <h2>Ross Power.</h2>
@@ -57,6 +66,13 @@ import ImgSlot from '../components/ImgSlot.astro';
     </div>
   </section>
 
+  <PhotoCarousel
+    label="On stage · live workshops & events"
+    images={FOUNDER_CAROUSEL_PHOTOS}
+    variant="double"
+    dark
+  />
+
   <section class="section-dark">
     <div class="wrap">
       <div class="grid g2" style="gap:52px;align-items:center">
@@ -67,29 +83,14 @@ import ImgSlot from '../components/ImgSlot.astro';
           <p class="text-soft" style="margin-bottom:16px"><b style="color:#fff">Kura Kura Bali</b> is a 100-hectare innovation and financial hub on Serangan Island, being developed as Indonesia's answer to Dubai's financial districts. Focused on digital technology, creative industries, luxury tourism and international finance, with income-tax holidays, VAT exemptions and duty-free import incentives for investors.</p>
           <p class="text-soft">Hosting our flagship event inside the SEZ positions AI Powered Bali at the front of Indonesia's push to make Bali a global business destination, alongside government, investors and the region's innovation economy.</p>
         </div>
-        <ImgSlot label="Kura Kura Bali aerial" minHeight="440px" />
+        <ImgSlot label="Kura Kura Bali aerial" minHeight="440px" src={BALI_MOUNTAINS} alt="Bali landscape" />
       </div>
     </div>
   </section>
 
-  <section class="section-light">
-    <div class="wrap">
-      <p class="kicker">The Roadmap</p>
-      <h2>Two events. One movement.</h2>
-      <div class="timeline" style="margin-top:14px">
-        <div class="card">
-          <div class="label">Step 1 · September 2026</div>
-          <h3>The Ignition · Canggu</h3>
-          <p class="text-soft" style="font-size:15.5px">A 1-day event and afterparty bringing together speakers and builders from across Bali on all three pillars. Proof of concept, first content engine, and the founding community for April.</p>
-        </div>
-        <div class="card featured">
-          <div class="label" style="color:var(--accent)">Step 2 · April 2027</div>
-          <h3>The Flagship · 2 to 3 days</h3>
-          <p class="text-soft" style="font-size:15.5px">700 to 1,000 entrepreneurs. International speaker line-up. Government and SEZ collaboration. Workshops by day, music and experiences by night.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CampaignRoadmap />
+
+  <ImageBreak src={BALI_MOUNTAINS} alt="Bali mountains" label="Bali · Indonesia" height="min(36vh, 360px)" />
 
   <section class="section-dark">
     <div class="wrap text-center" style="max-width:720px">

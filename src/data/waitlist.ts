@@ -1,0 +1,60 @@
+export const WORK_TYPES = [
+  { value: 'employed', label: 'Employed' },
+  { value: 'self-employed', label: 'Self-employed' },
+  { value: 'founder', label: 'Founder / business owner' },
+  { value: 'creator', label: 'Creator / content builder' },
+  { value: 'coach', label: 'Coach / consultant' },
+  { value: 'freelancer', label: 'Freelancer' },
+  { value: 'investor', label: 'Investor' },
+  { value: 'student', label: 'Student' },
+  { value: 'other', label: 'Other' },
+] as const;
+
+export const BUSINESS_YEARS = [
+  { value: 'under-1', label: 'Less than 1 year' },
+  { value: '1-2', label: '1 to 2 years' },
+  { value: '3-5', label: '3 to 5 years' },
+  { value: '5-10', label: '5 to 10 years' },
+  { value: '10-plus', label: '10+ years' },
+] as const;
+
+export const COUNTRIES = [
+  'Australia',
+  'Indonesia',
+  'Singapore',
+  'United States',
+  'United Kingdom',
+  'Canada',
+  'New Zealand',
+  'Germany',
+  'Netherlands',
+  'France',
+  'United Arab Emirates',
+  'Malaysia',
+  'Thailand',
+  'Philippines',
+  'India',
+  'Japan',
+  'South Korea',
+  'Hong Kong',
+  'Ireland',
+  'Switzerland',
+  'Sweden',
+  'Norway',
+  'Denmark',
+  'Spain',
+  'Italy',
+  'Portugal',
+  'Brazil',
+  'Mexico',
+  'South Africa',
+  'Other',
+] as const;
+
+export const WAITLIST_STEPS = [
+  { id: 'you', title: 'You', subtitle: 'Let us know who you are' },
+  { id: 'location', title: 'Location', subtitle: 'Where you are building from' },
+  { id: 'business', title: 'Your path', subtitle: 'How long you have been building' },
+  { id: 'experience', title: 'The event', subtitle: 'What you want from Bali' },
+  { id: 'speakers', title: 'The line-up', subtitle: 'Who you want to see' },
+] as const;

@@ -1,30 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import BuildWithUs from '../components/BuildWithUs.astro';
+import ImageBreak from '../components/ImageBreak.astro';
 import SponsorBenefits from '../components/SponsorBenefits.astro';
 import SponsorCategories from '../components/SponsorCategories.astro';
 import SponsorForm from '../components/SponsorForm.astro';
 import PackageTiers from '../components/PackageTiers.astro';
+import { BALI_SURF, MERU_HOTEL } from '../data/assets';
 ---
 
 <BaseLayout
   title="Sponsor · April 2027"
-  description="Partner with AI Powered Bali. 1,000+ high-intent entrepreneurs, premium speaker association, full lead capture. Human, Artificial and Divine sponsorship categories."
+  description="Partner with AI Powered Bali. Looking for sponsors, venue partners and collaborators. 700 to 1,000 high-intent entrepreneurs. Official outreach from July 2026."
   ctaHref="#partner"
   ctaLabel="Become a sponsor"
 >
   <Hero
-    eyebrow="Partners · April 2027"
+    eyebrow="Partners · Campaign live July 2026"
     title="Why sponsor this event."
-    lead="1,000+ paying entrepreneurs who run on your tools. A concentrated audience across Pan-Asia, Middle East and ANZ. Workshop format, not a trade show booth."
+    lead="We are building this in public. Actively looking for sponsors, venue partners, and collaborators. 700 to 1,000 paying entrepreneurs who run on your tools. Workshop format, not a trade show booth."
     badges={[
       { mono: 'Audience', text: '700 to 1,000 entrepreneurs' },
       { mono: 'Speaker', text: 'Daniel Priestley committed' },
-      { mono: 'Format', text: 'Workshop-style, high dwell time' },
+      { mono: 'Status', text: 'Sponsor outreach in progress' },
     ]}
     primaryCta={{ href: '#partner', label: 'Become a sponsor' }}
-    secondaryCta={{ href: '/waitlist', label: 'Join waitlist' }}
+    secondaryCta={{ href: '#waitlist', label: 'Join waitlist' }}
+    bgImage={BALI_SURF}
+    bgPosition="center 55%"
+    compact
   />
+
+  <BuildWithUs variant="accent" />
 
   <section class="section-dark" style="padding-top:0">
     <div class="wrap">
@@ -34,11 +42,17 @@ import PackageTiers from '../components/PackageTiers.astro';
     </div>
   </section>
 
+  <ImageBreak src={MERU_HOTEL} alt="Premium Bali venue" label="Venue partners welcome" height="min(38vh, 380px)" align="bottom" />
+
   <section class="section-dark">
     <div class="wrap">
-      <p class="kicker">Our partners</p>
-      <h2>Brands that serve entrepreneurs.</h2>
-      <p class="lead mb-44">Sponsorship categories mapped to our three pillars. Category exclusivity available for founding partners.</p>
+      <p class="kicker">Target sponsors</p>
+      <h2>Brands we are pursuing.</h2>
+      <p class="lead mb-44" style="max-width:720px">
+        These are target sponsors across Human, Artificial and Divine pillars.
+        Official outreach began July 2026. None are confirmed partners yet.
+        Category exclusivity available for founding partners.
+      </p>
       <SponsorCategories />
     </div>
   </section>

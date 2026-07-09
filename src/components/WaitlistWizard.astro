@@ -1,0 +1,292 @@
+---
+import { COUNTRIES, WORK_TYPES, BUSINESS_YEARS, WAITLIST_STEPS } from '../data/waitlist';
+
+interface Props {
+  variant?: 'modal' | 'inline';
+}
+
+const { variant = 'inline' } = Astro.props;
+const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_WAITLIST ?? '';
+const contactEmail = 'ross@aipowered.xyz';
+const stepCount = WAITLIST_STEPS.length;
+---
+
+<div
+  class:list={['waitlist-wizard', { 'waitlist-wizard--inline': variant === 'inline' }]}
+  data-waitlist-wizard
+  data-variant={variant}
+>
+  <div class="waitlist-wizard-progress" aria-hidden="true">
+    {WAITLIST_STEPS.map((step, i) => (
+      <span class="waitlist-wizard-dot" data-step-dot={i} />
+    ))}
+  </div>
+  <p class="waitlist-wizard-step-label">
+    <span data-step-current>1</span> / {stepCount}
+    <span data-step-title>{WAITLIST_STEPS[0].title}</span>
+  </p>
+
+  <div class="waitlist-wizard-message hidden" data-wizard-message role="status" />
+
+  <!-- Thank you -->
+  <div class="waitlist-wizard-thanks hidden" data-wizard-thanks>
+    <div class="waitlist-thanks-icon" aria-hidden="true">✓</div>
+    <h3>You're on the list.</h3>
+    <p>Thank you. Your speaker picks and event ideas go straight into how we curate AI Powered Bali. We'll be in touch.</p>
+    {variant === 'modal' && (
+      <button type="button" class="btn-white" data-waitlist-close style="margin-top:24px">Close</button>
+    )}
+  </div>
+
+  <form class="waitlist-wizard-form" data-wizard-form novalidate>
+    <div class="form-honeypot" aria-hidden="true">
+      <label for="wl-website">Website</label>
+      <input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <!-- Step 1: Name + Email -->
+    <fieldset class="waitlist-wizard-step" data-step="0">
+      <legend class="sr-only">Your details</legend>
+      <p class="waitlist-wizard-intro">Join the waitlist for April 2027 in Bali. Early access to tickets and a say in who we bring.</p>
+      <div class="form-group">
+        <label for="wl-name">Full name *</label>
+        <input type="text" id="wl-name" name="fullName" required autocomplete="name" placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label for="wl-email">Email *</label>
+        <input type="email" id="wl-email" name="email" required autocomplete="email" placeholder="you@company.com" />
+      </div>
+    </fieldset>
+
+    <!-- Step 2: Country + work type -->
+    <fieldset class="waitlist-wizard-step hidden" data-step="1">
+      <legend class="sr-only">Location and work</legend>
+      <div class="form-group">
+        <label for="wl-country">Country *</label>
+        <select id="wl-country" name="country" required>
+          <option value="">Select your country</option>
+          {COUNTRIES.map((c) => (
+            <option value={c}>{c}</option>
+          ))}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="wl-work">How do you describe yourself? *</label>
+        <select id="wl-work" name="workType" required>
+          <option value="">Select one</option>
+          {WORK_TYPES.map((w) => (
+            <option value={w.value}>{w.label}</option>
+          ))}
+        </select>
+      </div>
+    </fieldset>
+
+    <!-- Step 3: Years building -->
+    <fieldset class="waitlist-wizard-step hidden" data-step="2">
+      <legend class="sr-only">Business experience</legend>
+      <div class="form-group">
+        <label for="wl-years">How many years have you been building this business? *</label>
+        <select id="wl-years" name="businessYears" required>
+          <option value="">Select one</option>
+          {BUSINESS_YEARS.map((y) => (
+            <option value={y.value}>{y.label}</option>
+          ))}
+        </select>
+      </div>
+    </fieldset>
+
+    <!-- Step 4: What to see -->
+    <fieldset class="waitlist-wizard-step hidden" data-step="3">
+      <legend class="sr-only">Event preferences</legend>
+      <div class="form-group">
+        <label for="wl-want">What would you like to see at an event like this most? *</label>
+        <textarea
+          id="wl-want"
+          name="eventWants"
+          rows="4"
+          required
+          placeholder="Workshops, networking, specific topics, experiences…"
+        />
+      </div>
+    </fieldset>
+
+    <!-- Step 5: Who to see -->
+    <fieldset class="waitlist-wizard-step hidden" data-step="4">
+      <legend class="sr-only">Speaker wishes</legend>
+      <p class="waitlist-wizard-intro waitlist-wizard-intro--accent">
+        We're curating this event based on who we hear people want to see. Who would <strong>you</strong> like to come to Bali?
+      </p>
+      <div class="form-group">
+        <label for="wl-speakers">Who would you like to see? *</label>
+        <textarea
+          id="wl-speakers"
+          name="speakersWanted"
+          rows="5"
+          required
+          placeholder="Names + why — e.g. Alex Hormozi on scaling, Ali Abdaal on creator systems…"
+        />
+      </div>
+    </fieldset>
+
+    <div class="waitlist-wizard-nav" data-wizard-nav>
+      <button type="button" class="btn-outline waitlist-wizard-back hidden" data-wizard-back>Back</button>
+      <button type="button" class="btn-white waitlist-wizard-next" data-wizard-next>Continue</button>
+      <button type="submit" class="btn-white waitlist-wizard-submit hidden" data-wizard-submit>Join the waitlist</button>
+    </div>
+  </form>
+
+  <p class="waitlist-wizard-fallback hidden" data-wizard-fallback>
+    Or email <a href={`mailto:${contactEmail}?subject=Waitlist%20-%20AI%20Powered%20Bali`}>{contactEmail}</a>
+  </p>
+</div>
+
+<script define:vars={{ webhookUrl, contactEmail, stepCount }}>
+  function initWaitlistWizard(root) {
+    if (!root || root.dataset.wizardInit === 'true') return;
+    root.dataset.wizardInit = 'true';
+
+    const form = root.querySelector('[data-wizard-form]');
+    const steps = [...root.querySelectorAll('[data-step]')];
+    const dots = [...root.querySelectorAll('[data-step-dot]')];
+    const backBtn = root.querySelector('[data-wizard-back]');
+    const nextBtn = root.querySelector('[data-wizard-next]');
+    const submitBtn = root.querySelector('[data-wizard-submit]');
+    const nav = root.querySelector('[data-wizard-nav]');
+    const thanks = root.querySelector('[data-wizard-thanks]');
+    const messageEl = root.querySelector('[data-wizard-message]');
+    const fallbackEl = root.querySelector('[data-wizard-fallback]');
+    const stepCurrent = root.querySelector('[data-step-current]');
+    const stepTitle = root.querySelector('[data-step-title]');
+    const titles = ['You', 'Location', 'Your path', 'The event', 'The line-up'];
+
+    let current = 0;
+
+    if (!webhookUrl && fallbackEl) {
+      fallbackEl.classList.remove('hidden');
+    }
+
+    function showMessage(text, type) {
+      messageEl.textContent = text;
+      messageEl.className = `waitlist-wizard-message form-message ${type}`;
+    }
+
+    function hideMessage() {
+      messageEl.className = 'waitlist-wizard-message hidden';
+    }
+
+    function validateStep(index) {
+      const step = steps[index];
+      const fields = [...step.querySelectorAll('input, select, textarea')].filter(
+        (el) => el.type !== 'hidden' && !el.closest('.form-honeypot')
+      );
+      for (const field of fields) {
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function renderStep() {
+      steps.forEach((step, i) => {
+        step.classList.toggle('hidden', i !== current);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+        dot.classList.toggle('done', i < current);
+      });
+      if (stepCurrent) stepCurrent.textContent = String(current + 1);
+      if (stepTitle) stepTitle.textContent = titles[current] ?? '';
+      backBtn?.classList.toggle('hidden', current === 0);
+      nextBtn?.classList.toggle('hidden', current === stepCount - 1);
+      submitBtn?.classList.toggle('hidden', current !== stepCount - 1);
+      hideMessage();
+    }
+
+    backBtn?.addEventListener('click', () => {
+      if (current > 0) {
+        current -= 1;
+        renderStep();
+      }
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      if (!validateStep(current)) return;
+      if (current < stepCount - 1) {
+        current += 1;
+        renderStep();
+      }
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validateStep(current)) return;
+
+      const fd = new FormData(form);
+      if (fd.get('website')) return;
+
+      if (!webhookUrl) {
+        showMessage(`Form temporarily unavailable. Please email ${contactEmail} directly.`, 'error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Joining…';
+      hideMessage();
+
+      const payload = {
+        fullName: fd.get('fullName'),
+        email: fd.get('email'),
+        country: fd.get('country'),
+        workType: fd.get('workType'),
+        businessYears: fd.get('businessYears'),
+        eventWants: fd.get('eventWants'),
+        speakersWanted: fd.get('speakersWanted'),
+        source: 'aipoweredbali.com/waitlist',
+        tag: 'waitlist-april-2027',
+      };
+
+      try {
+        const res = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('fail');
+        form.classList.add('hidden');
+        nav?.classList.add('hidden');
+        root.querySelector('.waitlist-wizard-progress')?.classList.add('hidden');
+        root.querySelector('.waitlist-wizard-step-label')?.classList.add('hidden');
+        thanks?.classList.remove('hidden');
+        form.reset();
+        current = 0;
+        renderStep();
+      } catch {
+        showMessage(`Something went wrong. Please email ${contactEmail} directly.`, 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the waitlist';
+      }
+    });
+
+    root.resetWizard = () => {
+      current = 0;
+      form?.classList.remove('hidden');
+      nav?.classList.remove('hidden');
+      thanks?.classList.add('hidden');
+      root.querySelector('.waitlist-wizard-progress')?.classList.remove('hidden');
+      root.querySelector('.waitlist-wizard-step-label')?.classList.remove('hidden');
+      form?.reset();
+      renderStep();
+      hideMessage();
+    };
+
+    renderStep();
+  }
+
+  document.querySelectorAll('[data-waitlist-wizard]').forEach(initWaitlistWizard);
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('[data-waitlist-wizard]').forEach(initWaitlistWizard);
+  });
+</script>

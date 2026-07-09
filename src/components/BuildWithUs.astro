@@ -1,0 +1,44 @@
+---
+interface Props {
+  variant?: 'dark' | 'light' | 'accent';
+}
+
+const { variant = 'dark' } = Astro.props;
+
+const items = [
+  { label: 'Partners', href: '/sponsors' },
+  { label: 'Venues', href: '/sponsors#partner' },
+  { label: 'Collaborators', href: '/about' },
+  { label: 'Sponsors', href: '/sponsors' },
+  { label: 'Speakers', href: '/speakers' },
+];
+---
+
+<section class:list={['build-with-us', `build-with-us--${variant}`]}>
+  <div class="wrap build-with-us-inner">
+    <div class="build-with-us-copy">
+      <p class="kicker">In progress · Your opportunity</p>
+      <h2>We're building this right now.</h2>
+      <p class="lead">
+        This is not a finished product on a shelf. We are actively looking for partners, venues,
+        collaborators, sponsors, and speakers. This is your chance to help shape the greatest gathering
+        for creators and entrepreneurs Bali has ever witnessed.
+      </p>
+      <p class="build-with-us-sub">
+        Official outreach began July 2026. If you want in early, before the room fills up, now is the moment.
+      </p>
+    </div>
+    <div class="build-with-us-actions">
+      <div class="build-with-us-chips">
+        {items.map((item) => (
+          <a href={item.href} class="build-with-us-chip">Looking for {item.label}</a>
+        ))}
+      </div>
+      <div class="hero-ctas build-with-us-ctas">
+        <button type="button" class="btn-white" data-waitlist-open>Join the waitlist</button>
+        <a class="btn-outline" href="/sponsors">Partner with us</a>
+        <a class="btn-outline" href="/speakers">Apply to speak</a>
+      </div>
+    </div>
+  </div>
+</section>

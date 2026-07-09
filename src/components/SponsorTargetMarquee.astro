@@ -1,0 +1,36 @@
+---
+import { SPONSOR_TARGETS, sponsorLogoUrl } from '../data/sponsor-targets';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const targets = [...SPONSOR_TARGETS, ...SPONSOR_TARGETS];
+---
+
+<div class:list={['sponsor-marquee', { 'sponsor-marquee--compact': compact }]}>
+  <div class="sponsor-marquee-header">
+    <p class="sponsor-marquee-label">Our sponsor targets</p>
+    <p class="sponsor-marquee-note">
+      <span class="pill pill-target">Target</span>
+      Official sponsorship outreach began July 2026. These are brands we are actively pursuing, not confirmed partners.
+    </p>
+  </div>
+  <div class="sponsor-marquee-fade">
+    <div class="sponsor-marquee-track">
+      {targets.map((target) => (
+        <div class="sponsor-logo-card" title={`${target.name} — target sponsor`}>
+          <img
+            src={sponsorLogoUrl(target.domain)}
+            alt={target.name}
+            loading="lazy"
+            decoding="async"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false"
+          />
+          <span class="sponsor-logo-fallback" hidden>{target.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

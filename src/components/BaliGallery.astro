@@ -1,0 +1,22 @@
+---
+import { BALI_LOCATION_PHOTOS } from '../data/assets';
+
+interface Props {
+  title?: string;
+  limit?: number;
+}
+
+const { title = 'Bali', limit = 6 } = Astro.props;
+const photos = BALI_LOCATION_PHOTOS.slice(0, limit);
+---
+
+<div class="bali-gallery">
+  {title && <p class="bali-gallery-label">{title}</p>}
+  <div class="bali-gallery-grid">
+    {photos.map((photo, i) => (
+      <div class:list={['bali-gallery-item', { 'bali-gallery-item--wide': i === 0, 'bali-gallery-item--tall': i === 2 }]}>
+        <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+      </div>
+    ))}
+  </div>
+</div>

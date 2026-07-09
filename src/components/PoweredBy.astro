@@ -1,0 +1,31 @@
+---
+import { POWERED_BY_LOGOS } from '../data/assets';
+---
+
+<section class="powered-by" aria-label="Powered by HighLevel and Claude">
+  <div class="wrap powered-by-inner">
+    <p class="powered-by-eyebrow">Powered by</p>
+    <div class="powered-by-logos">
+      <a
+        href="https://www.gohighlevel.com/"
+        class="powered-by-logo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src={POWERED_BY_LOGOS.highlevel.src} alt={POWERED_BY_LOGOS.highlevel.alt} loading="eager" decoding="async" />
+      </a>
+      <span class="powered-by-amp" aria-hidden="true">&</span>
+      <a
+        href="https://claude.ai/"
+        class="powered-by-logo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src={POWERED_BY_LOGOS.claude.src} alt={POWERED_BY_LOGOS.claude.alt} loading="eager" decoding="async" />
+      </a>
+    </div>
+    <p class="powered-by-note">
+      The infrastructure and intelligence behind how we build, market, and run this event.
+    </p>
+  </div>
+</section>

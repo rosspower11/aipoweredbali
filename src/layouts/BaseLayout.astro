@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import WaitlistModal from '../components/WaitlistModal.astro';
 import { SITE_NAME, SITE_URL } from '../data/site';
 import { FAVICON } from '../data/cdn';
 
@@ -52,5 +53,6 @@ const fullTitle = title.includes(SITE_NAME) ? title : `${title} · ${SITE_NAME}`
       <slot />
     </main>
     {showFooter && <Footer />}
+    <WaitlistModal />
   </body>
 </html>

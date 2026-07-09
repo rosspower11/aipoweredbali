@@ -1,3 +1,5 @@
+import { SPEAKER_IMAGES } from './assets';
+
 export type SpeakerTier = 'committed' | 'in-discussion' | 'target';
 
 export interface SpeakerSocial {
@@ -27,6 +29,7 @@ export const FEATURED_SPEAKERS: Speaker[] = [
     role: 'Entrepreneur · Author · Co-founder, Dent Global and ScoreApp',
     bio: 'Author of Key Person of Influence, Oversubscribed, 24 Assets and Entrepreneur Revolution. Built multi-million-dollar businesses across the UK, USA, Singapore and Australia. A repeat guest on The Diary of a CEO, where his episodes rank among the most-watched business conversations ever published.',
     imageLabel: 'Daniel Priestley portrait',
+    imageSrc: SPEAKER_IMAGES['daniel-priestley'],
     socials: [
       { platform: 'Instagram', count: '134K+' },
       { platform: 'LinkedIn', count: '78K+' },
@@ -43,6 +46,7 @@ export const FEATURED_SPEAKERS: Speaker[] = [
     role: 'Writer · Creator · Author of The Art of Focus · Founder, Kortex',
     bio: 'One of the defining voices of the one-person-business era. Built a multi-million-dollar solo business teaching creators how to turn ideas, writing and AI leverage into income. Holds the record for one of the most-viewed articles ever posted on X, at 150M+ views.',
     imageLabel: 'Dan Koe portrait',
+    imageSrc: SPEAKER_IMAGES['dan-koe'],
     socials: [
       { platform: 'X', count: '2M+' },
       { platform: 'YouTube', count: '1.4M' },
@@ -59,6 +63,7 @@ export const FEATURED_SPEAKERS: Speaker[] = [
     role: 'Filmmaker · Creator educator · Founder, Time to Build',
     bio: 'Australian filmmaker and one of the most-watched voices on creativity and personal branding. Through Time to Build, now past its 10th cohort, Tom has taught thousands of creators to turn their craft into a business.',
     imageLabel: 'Tom Noske portrait',
+    imageSrc: SPEAKER_IMAGES['tom-noske'],
     socials: [
       { platform: 'Instagram', count: 'TBC' },
       { platform: 'YouTube', count: '50K+' },

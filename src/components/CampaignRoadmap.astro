@@ -1,0 +1,57 @@
+---
+const steps = [
+  {
+    phase: 'July 2026',
+    title: 'Campaign launch',
+    status: 'active',
+    body: 'Official speaker and sponsorship outreach begins. We are actively booking conversations with target partners and voices for April 2027.',
+  },
+  {
+    phase: 'July – September 2026',
+    title: 'Sponsor engagement',
+    status: 'next',
+    body: 'Initial sponsor conversations, category partnerships across Human, Artificial and Divine pillars, and early community building with Bali-based founders.',
+  },
+  {
+    phase: 'September 2026',
+    title: 'The Ignition · Canggu',
+    status: 'milestone',
+    body: 'First 1-day Bali event. Targeting 300 entrepreneurs. Proof of concept, content engine, and the founding room for the flagship.',
+  },
+  {
+    phase: 'October 2026 – March 2027',
+    title: 'Flagship campaign',
+    status: 'future',
+    body: 'Speaker announcements, sponsor reveals, ticket waitlist opens, and the push toward 700 to 1,000 seats for April.',
+  },
+  {
+    phase: 'April 2027',
+    title: 'The Flagship · Bali',
+    status: 'flagship',
+    body: '2 to 3 day immersive conference. International line-up. Workshops by day, music and experiences by night. The event this region does not have yet.',
+  },
+];
+---
+
+<section id="roadmap" class="section-light">
+  <div class="wrap">
+    <p class="kicker">The Roadmap</p>
+    <h2>From outreach to the main stage.</h2>
+    <p class="lead mb-44">
+      We are building in public. July 2026 marks the start of the official speaker and sponsorship campaign,
+      through a September ignition event and on to April 2027.
+    </p>
+    <div class="campaign-roadmap">
+      {steps.map((step) => (
+        <div class:list={['campaign-step', `campaign-step--${step.status}`]}>
+          <div class="campaign-step-marker" aria-hidden="true" />
+          <div class="campaign-step-body">
+            <p class="campaign-step-phase">{step.phase}</p>
+            <h3>{step.title}</h3>
+            <p class="text-soft">{step.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

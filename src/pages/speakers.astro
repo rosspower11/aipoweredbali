@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
+import SpeakerHero from '../components/SpeakerHero.astro';
+import BuildWithUs from '../components/BuildWithUs.astro';
+import ImageBreak from '../components/ImageBreak.astro';
 import SpeakerCard from '../components/SpeakerCard.astro';
 import SpeakerTargetPills from '../components/SpeakerTargetPills.astro';
 import SpeakerForm from '../components/SpeakerForm.astro';
@@ -9,40 +11,45 @@ import {
   IN_DISCUSSION_SPEAKERS,
   TARGET_SPEAKERS,
 } from '../data/speakers';
+import { BALI_NATURE } from '../data/assets';
 ---
 
 <BaseLayout
   title="Speakers · April 2027"
   description="Daniel Priestley committed. Dan Koe and Tom Noske in discussion. World-class targets across Human, Artificial and Divine. Apply to speak at AI Powered Bali."
 >
-  <Hero
-    eyebrow="The Line-Up · April 2027"
+  <SpeakerHero
+    eyebrow="The Line-Up · Campaign live July 2026"
     title="The names your audience is already learning from."
-    lead="Practical builders. World-class teachers. Now in the room, not on a screen."
-    primaryCta={{ href: '/waitlist', label: 'Join waitlist' }}
-    secondaryCta={{ href: '/sponsors', label: 'Become a sponsor' }}
-    compact
+    lead="Practical builders. World-class teachers. We're actively pursuing speakers for April 2027. Daniel is confirmed. Dan and Tom are in discussion. The rest are targets we're going after right now."
+    badges={[
+      { mono: 'Committed', text: 'Daniel Priestley' },
+      { mono: 'In discussion', text: 'Dan Koe · Tom Noske' },
+      { mono: 'Status', text: 'Speaker outreach in progress' },
+    ]}
+    primaryCta={{ href: '#apply', label: 'Apply to speak' }}
+    secondaryCta={{ href: '#waitlist', label: 'Join waitlist' }}
   />
 
-  <!-- Committed -->
+  <BuildWithUs variant="dark" />
+
   <section class="section-dark" style="padding-top:0">
     <div class="wrap">
       <p class="kicker">Committed</p>
       <h2>Confirmed for April 2027.</h2>
-      <p class="lead mb-44">Headline speakers locked in. More announcements coming.</p>
+      <p class="lead mb-44">Headline speakers locked in. More announcements coming as conversations close.</p>
       {COMMITTED_SPEAKERS.map((speaker) => (
         <SpeakerCard speaker={speaker} featured />
       ))}
     </div>
   </section>
 
-  <!-- In discussion + targets (two-column like reference) -->
   <section class="section-dark">
     <div class="wrap">
       <div class="speakers-split">
         <div class="speakers-split-col">
           <p class="kicker">In discussion</p>
-          <p class="text-soft" style="margin-bottom:28px;font-size:15px">We'd love to make you our headline speaker.</p>
+          <p class="text-soft" style="margin-bottom:28px;font-size:15px">Active conversations. Not confirmed yet.</p>
           {IN_DISCUSSION_SPEAKERS.map((speaker, i) => (
             <>
               {i > 0 && <div class="divider" />}
@@ -52,14 +59,17 @@ import {
         </div>
         <div class="speakers-split-col">
           <p class="kicker">Initial targets</p>
-          <p class="text-soft" style="margin-bottom:28px;font-size:15px">Showing the caliber we're pursuing.</p>
+          <p class="text-soft" style="margin-bottom:28px;font-size:15px">
+            <span class="pill pill-target">Target</span> The caliber we're pursuing. Outreach in progress.
+          </p>
           <SpeakerTargetPills targets={TARGET_SPEAKERS} />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What unites them -->
+  <ImageBreak src={BALI_NATURE} alt="Bali" label="April 2027 · Bali" height="min(36vh, 360px)" />
+
   <section class="section-dark" style="padding-top:0">
     <div class="wrap">
       <div class="grid g2" style="gap:52px;align-items:start">
@@ -75,7 +85,7 @@ import {
     </div>
   </section>
 
-  <section class="section-light">
+  <section id="apply" class="section-light">
     <div class="wrap">
       <SpeakerForm />
     </div>

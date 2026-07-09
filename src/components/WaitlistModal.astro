@@ -1,0 +1,77 @@
+---
+import WaitlistWizard from './WaitlistWizard.astro';
+---
+
+<div class="waitlist-modal" data-waitlist-modal hidden aria-hidden="true">
+  <div class="waitlist-modal-backdrop" data-waitlist-close tabindex="-1" />
+  <div
+    class="waitlist-modal-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="waitlist-modal-title"
+  >
+    <button type="button" class="waitlist-modal-close" data-waitlist-close aria-label="Close">
+      ×
+    </button>
+    <p class="eyebrow eyebrow-light" id="waitlist-modal-title">Join the waitlist</p>
+    <h2 class="waitlist-modal-heading">Tell us who <em>you</em> want in Bali.</h2>
+    <p class="waitlist-modal-lead">
+      We're curating speakers and the programme based on what you tell us. Step by step, about 2 minutes.
+    </p>
+    <WaitlistWizard variant="modal" />
+  </div>
+</div>
+
+<script>
+  const modal = document.querySelector('[data-waitlist-modal]');
+  const dialog = modal?.querySelector('.waitlist-modal-dialog');
+  let lastFocus = null;
+
+  function openWaitlistModal() {
+    if (!modal) return;
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('waitlist-modal-open');
+    const firstInput = modal.querySelector('input:not([type="hidden"])');
+    if (firstInput instanceof HTMLElement) {
+      setTimeout(() => firstInput.focus(), 50);
+    }
+  }
+
+  function closeWaitlistModal() {
+    if (!modal) return;
+    modal.hidden = true;
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('waitlist-modal-open');
+    const wizard = modal.querySelector('[data-waitlist-wizard]');
+    if (wizard?.resetWizard) wizard.resetWizard();
+    if (lastFocus instanceof HTMLElement) lastFocus.focus();
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+
+    if (target.closest('[data-waitlist-open]')) {
+      e.preventDefault();
+      openWaitlistModal();
+      return;
+    }
+
+    if (target.closest('[data-waitlist-close]')) {
+      e.preventDefault();
+      closeWaitlistModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.hidden) {
+      closeWaitlistModal();
+    }
+  });
+
+  if (window.location.hash === '#waitlist') {
+    openWaitlistModal();
+  }
+</script>
