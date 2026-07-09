@@ -19,7 +19,7 @@ const contactEmail = 'ross@aipowered.xyz';
   </div>
   <button type="submit" class="btn btn-primary" id="waitlist-submit" style="width:100%">Join the waitlist</button>
   <p id="waitlist-fallback" style="margin-top:16px;font-size:14px;color:#8f8f98;display:none">
-    Or email <a href={`mailto:${contactEmail}?subject=Waitlist%20—%20AI%20Powered%20Bali%20April%202027`} style="color:var(--accent)">{contactEmail}</a>
+    Or email <a href={`mailto:${contactEmail}?subject=Waitlist%20-%20AI%20Powered%20Bali%20April%202027`} style="color:var(--accent)">{contactEmail}</a>
   </p>
 </form>
 
@@ -61,7 +61,7 @@ const contactEmail = 'ross@aipowered.xyz';
       });
 
       if (res.ok) {
-        messageEl.textContent = 'You\'re on the list — we\'ll be in touch.';
+        messageEl.textContent = 'You\'re on the list. We\'ll be in touch.';
         messageEl.className = 'form-message success';
         form.reset();
       } else {

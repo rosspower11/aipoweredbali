@@ -1,0 +1,15 @@
+---
+import type { TargetSpeaker } from '../data/speakers';
+
+interface Props {
+  targets: TargetSpeaker[];
+}
+
+const { targets } = Astro.props;
+---
+
+<div class="target-pills">
+  {targets.map((t) => (
+    <span class="target-pill" title={t.note}>{t.name}</span>
+  ))}
+</div>

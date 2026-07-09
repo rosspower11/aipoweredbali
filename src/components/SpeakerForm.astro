@@ -7,7 +7,7 @@ const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_SPEAKERS ?? '';
 <div class="card form-card" id="speaker-form-card">
   <div class="kicker">Apply to speak</div>
   <h2 style="font-size:clamp(24px,3vw,36px)">Share your idea.</h2>
-  <p class="lead" style="margin-bottom:28px">We're looking for voices across Human, Artificial and Divine — builders with something real to teach.</p>
+  <p class="lead" style="margin-bottom:28px">We're looking for voices across Human, Artificial and Divine. Builders with something real to teach.</p>
   <div id="speaker-form-message" class="form-message hidden" role="status"></div>
   <form id="speaker-form">
     <div class="form-honeypot" aria-hidden="true">
@@ -49,7 +49,7 @@ const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_SPEAKERS ?? '';
     </div>
     <button type="submit" class="btn btn-primary" id="speaker-submit">Submit application</button>
     <p id="speaker-fallback" class="text-soft" style="margin-top:16px;font-size:14px;display:none">
-      Or email <a href={`mailto:${CONTACT_EMAIL}?subject=Speaker%20Application%20—%20AI%20Powered%20Bali`} style="color:var(--accent)">{CONTACT_EMAIL}</a>
+      Or email <a href={`mailto:${CONTACT_EMAIL}?subject=Speaker%20Application%20-%20AI%20Powered%20Bali`} style="color:var(--accent)">{CONTACT_EMAIL}</a>
     </p>
   </form>
 </div>
@@ -97,7 +97,7 @@ const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_SPEAKERS ?? '';
       });
 
       if (res.ok) {
-        messageEl.textContent = 'Application received — thank you.';
+        messageEl.textContent = 'Application received. Thank you.';
         messageEl.className = 'form-message success';
         form.reset();
       } else {

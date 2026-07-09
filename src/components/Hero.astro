@@ -1,0 +1,61 @@
+---
+interface Badge {
+  mono?: string;
+  text: string;
+}
+
+interface Cta {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  badges?: Badge[];
+  primaryCta?: Cta;
+  secondaryCta?: Cta;
+  compact?: boolean;
+  bgImage?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lead,
+  badges = [],
+  primaryCta = { href: '/waitlist', label: 'Join waitlist' },
+  secondaryCta = { href: '/sponsors', label: 'Become a sponsor' },
+  compact = false,
+  bgImage,
+} = Astro.props;
+
+const heroStyle = bgImage
+  ? `background-image: linear-gradient(to bottom, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.92) 60%, var(--bg-black) 100%), url('${bgImage}');`
+  : undefined;
+---
+
+<header class:list={['hero-bleed', { 'hero-bleed--compact': compact }]} style={heroStyle}>
+  <div class="hero-bleed-inner container">
+    <p class="eyebrow eyebrow-light">{eyebrow}</p>
+    <h1 set:html={title} />
+    {lead && <p class="hero-sub">{lead}</p>}
+    {badges.length > 0 && (
+      <div class="hero-meta">
+        {badges.map((badge) => (
+          <span class="hero-meta-pill">
+            {badge.mono && <span class="hero-meta-mono">{badge.mono}</span>}
+            {badge.text}
+          </span>
+        ))}
+      </div>
+    )}
+    {(primaryCta || secondaryCta) && (
+      <div class="hero-ctas">
+        {primaryCta && <a class="btn-white" href={primaryCta.href}>{primaryCta.label}</a>}
+        {secondaryCta && <a class="btn-outline" href={secondaryCta.href}>{secondaryCta.label}</a>}
+      </div>
+    )}
+  </div>
+</header>

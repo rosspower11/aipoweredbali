@@ -44,7 +44,7 @@ const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_SPONSORS ?? '';
     </div>
     <button type="submit" class="btn btn-primary" id="sponsor-submit">Send enquiry</button>
     <p id="sponsor-fallback" class="text-soft" style="margin-top:16px;font-size:14px;display:none">
-      Or email us directly at <a href={`mailto:${CONTACT_EMAIL}?subject=Partnership%20—%20AI%20Powered%20Bali`} style="color:var(--accent)">{CONTACT_EMAIL}</a>
+      Or email us directly at <a href={`mailto:${CONTACT_EMAIL}?subject=Partnership%20-%20AI%20Powered%20Bali`} style="color:var(--accent)">{CONTACT_EMAIL}</a>
     </p>
   </form>
 </div>
@@ -91,7 +91,7 @@ const webhookUrl = import.meta.env.PUBLIC_GHL_WEBHOOK_SPONSORS ?? '';
       });
 
       if (res.ok) {
-        messageEl.textContent = 'Thank you — we\'ll be in touch shortly.';
+        messageEl.textContent = 'Thank you. We\'ll be in touch shortly.';
         messageEl.className = 'form-message success';
         form.reset();
       } else {

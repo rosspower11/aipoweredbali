@@ -1,0 +1,27 @@
+---
+import { PARTNER_CATEGORIES } from '../data/sponsors';
+
+const pillarLabels: Record<string, string> = {
+  human: '01 · Human',
+  artificial: '02 · Artificial',
+  divine: '03 · Divine',
+};
+---
+
+<div class="partner-pillars">
+  {PARTNER_CATEGORIES.map((cat) => (
+    <div class="partner-pillar">
+      <p class="kicker">{pillarLabels[cat.pillar]}</p>
+      <h3>{cat.title}</h3>
+      <div class="partner-brands">
+        {cat.brands.map((brand) => (
+          <span class="partner-brand">{brand}</span>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+<p class="partner-cta-line">
+  <span class="partner-cta-bar" aria-hidden="true"></span>
+  Interested in sponsorship? Let's discuss something that fits.
+</p>

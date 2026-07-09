@@ -1,38 +1,70 @@
 ---
 import { NAV_LINKS } from '../data/site';
+import { LOGO_WHITE } from '../data/cdn';
 
 interface Props {
-  ctaHref?: string;
-  ctaLabel?: string;
   minimal?: boolean;
 }
 
-const {
-  ctaHref = '/waitlist',
-  ctaLabel = 'Join waitlist',
-  minimal = false,
-} = Astro.props;
-
+const { minimal = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<nav>
-  <div class="nav-inner">
-    <a href="/" class="logo">AI&nbsp;POWERED <span>BALI</span></a>
-    {!minimal && (
-      <>
-        <div class="nav-links">
+<nav class="nav" id="site-nav">
+  <a href="/" class="nav-logo">
+    <img class="nav-logo-img" src={LOGO_WHITE} alt="AI Powered" width="132" height="24" />
+    <span class="nav-logo-text">Bali</span>
+  </a>
+  {!minimal && (
+    <>
+      <div class="nav-center" id="nav-center">
+        <div class="nav-pills">
           {NAV_LINKS.map((link) => (
             <a
               href={link.href}
-              class:list={{ active: currentPath === link.href }}
+              class:list={['nav-pill', { active: currentPath === link.href }]}
             >
               {link.label}
             </a>
           ))}
         </div>
-        <a class="nav-cta" href={ctaHref}>{ctaLabel}</a>
-      </>
-    )}
-  </div>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-cta nav-cta-ghost" href="/sponsors">Sponsor</a>
+        <a class="nav-cta nav-cta-primary" href="/waitlist">Join waitlist</a>
+      </div>
+      <button
+        type="button"
+        class="nav-burger"
+        id="nav-burger"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span /><span /><span />
+      </button>
+    </>
+  )}
 </nav>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const center = document.getElementById('nav-center');
+
+  burger?.addEventListener('click', () => {
+    const open = center?.classList.toggle('open');
+    burger.classList.toggle('open', !!open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  center?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      center.classList.remove('open');
+      burger?.classList.remove('open');
+      burger?.setAttribute('aria-expanded', 'false');
+      burger?.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

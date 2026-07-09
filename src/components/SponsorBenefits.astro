@@ -1,0 +1,13 @@
+---
+import { SPONSOR_BENEFITS } from '../data/sponsors';
+---
+
+<div class="benefits-grid">
+  {SPONSOR_BENEFITS.map((b) => (
+    <div class="benefit-card">
+      <h3>{b.title}</h3>
+      <p>{b.description}</p>
+    </div>
+  ))}
+</div>
+<p class="benefits-footnote">This audience isn't scrolling past your booth. They're here to learn, connect, and buy.</p>

@@ -1,7 +1,6 @@
 ---
 import ImgSlot from './ImgSlot.astro';
-import { SPEAKERS, MYSTERY_SPEAKER_COUNT } from '../data/speakers';
-import SpeakerMystery from './SpeakerMystery.astro';
+import { FEATURED_SPEAKERS, TARGET_SPEAKERS } from '../data/speakers';
 
 interface Props {
   dark?: boolean;
@@ -10,27 +9,31 @@ interface Props {
 const { dark = false } = Astro.props;
 ---
 
-<section class:list={[{ dark }]} style={dark ? undefined : 'background:var(--paper)'}>
+<section class:list={[{ dark: dark, 'section-dark': dark }, { 'section-light': !dark }]}>
   <div class="wrap">
-    <div class="kicker">The Line-Up</div>
+    <p class="kicker">The Line-Up</p>
     <h2>Voices you'll meet in Bali.</h2>
-    <p class="lead mb-44">Confirmed and in-discussion speakers — with more announcements coming.</p>
+    <p class="lead mb-44">Confirmed and in-discussion speakers, with more announcements coming.</p>
     <div class="speaker-teaser-grid">
-      {SPEAKERS.map((speaker) => (
+      {FEATURED_SPEAKERS.map((speaker) => (
         <a href="/speakers" class="speaker-teaser">
           <ImgSlot label={speaker.imageLabel} src={speaker.imageSrc} alt={speaker.name} minHeight="200px" />
-          <span class={`pill ${speaker.status === 'confirmed' ? 'pill-green' : 'pill-amber'}`} style="margin-bottom:8px">
-            {speaker.status === 'confirmed' ? '✓ Confirmed' : '◌ In discussion'}
+          <span class={`pill ${speaker.tier === 'committed' ? 'pill-green' : 'pill-amber'}`} style="margin-bottom:8px">
+            {speaker.tier === 'committed' ? 'Committed' : 'In discussion'}
           </span>
           <h4>{speaker.name}</h4>
         </a>
       ))}
-      {Array.from({ length: MYSTERY_SPEAKER_COUNT }).map(() => (
-        <SpeakerMystery />
+      {TARGET_SPEAKERS.slice(0, 6).map((t) => (
+        <a href="/speakers" class="speaker-teaser speaker-teaser--target">
+          <div class="target-pill-preview">?</div>
+          <span class="pill pill-muted">Target</span>
+          <h4>{t.name}</h4>
+        </a>
       ))}
     </div>
     <p style="margin-top:28px;text-align:center">
-      <a href="/speakers" class="btn btn-dark">See full line-up</a>
+      <a href="/speakers" class="btn-dark">See full line-up</a>
     </p>
   </div>
 </section>

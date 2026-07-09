@@ -5,16 +5,18 @@ import ImgSlot from './ImgSlot.astro';
 interface Props {
   speaker: Speaker;
   showBio?: boolean;
+  featured?: boolean;
 }
 
-const { speaker, showBio = true } = Astro.props;
+const { speaker, showBio = true, featured = false } = Astro.props;
+
 const statusLabel =
-  speaker.status === 'confirmed' ? '✓ Confirmed' : '◌ In discussion';
+  speaker.tier === 'committed' ? 'Committed' : 'In discussion';
 const statusClass =
-  speaker.status === 'confirmed' ? 'pill-green' : 'pill-amber';
+  speaker.tier === 'committed' ? 'pill-green' : 'pill-amber';
 ---
 
-<div class="speaker">
+<div class:list={['speaker', { 'speaker--featured': featured }]}>
   <ImgSlot label={speaker.imageLabel} src={speaker.imageSrc} alt={speaker.name} />
   <div>
     <span class={`pill ${statusClass}`}>{statusLabel}</span>
@@ -23,16 +25,20 @@ const statusClass =
     {showBio && (
       <p class="text-soft" style="font-size:15.5px">{speaker.bio}</p>
     )}
-    <div class="socials">
-      {speaker.socials.map((s) => (
-        <div class="social">
-          <div class="n">{s.count}</div>
-          <div class="p">{s.platform}</div>
+    {speaker.socials.some((s) => s.count !== 'TBC') && (
+      <>
+        <div class="socials">
+          {speaker.socials.map((s) => (
+            <div class="social">
+              <div class="n">{s.count}</div>
+              <div class="p">{s.platform}</div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-    <div class="reach">
-      <span class="big">{speaker.reach}</span> combined social audience*
-    </div>
+        <div class="reach">
+          <span class="big">{speaker.reach}</span> combined audience*
+        </div>
+      </>
+    )}
   </div>
 </div>

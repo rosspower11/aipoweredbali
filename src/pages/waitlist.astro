@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import WaitlistForm from '../components/WaitlistForm.astro';
 import { SITE_NAME } from '../data/site';
+import { LOGO_WHITE } from '../data/cdn';
 ---
 
 <!doctype html>
@@ -10,34 +11,39 @@ import { SITE_NAME } from '../data/site';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join the Waitlist · {SITE_NAME}</title>
-    <meta name="description" content="Join the waitlist for AI Powered Bali — April 2027. 700–1,000 entrepreneurs. Daniel Priestley confirmed." />
+    <meta name="description" content="Join the waitlist for AI Powered Bali, April 2027. 700 to 1,000 entrepreneurs. Daniel Priestley confirmed." />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={`Join the Waitlist · ${SITE_NAME}`} />
-    <meta property="og:description" content="April 2027 · Bali · 700–1,000 entrepreneurs. Daniel Priestley confirmed." />
+    <meta property="og:description" content="April 2027 · Bali · 700 to 1,000 entrepreneurs. Daniel Priestley confirmed." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
     <div class="waitlist-page">
       <header class="waitlist-header">
-        <a href="/" class="logo">AI&nbsp;POWERED <span>BALI</span></a>
+        <a href="/" class="nav-logo">
+          <img class="nav-logo-img" src={LOGO_WHITE} alt="AI Powered" width="132" height="24" />
+        </a>
       </header>
       <main class="waitlist-main">
         <div class="waitlist-inner">
-          <div class="kicker">April 2027 · Bali</div>
+          <p class="eyebrow eyebrow-light">April 2027 · Bali</p>
           <h1>The premier entrepreneur conference for the builders of the AI era.</h1>
-          <p class="subline">April 2027 · Bali · 700–1,000 entrepreneurs</p>
+          <p class="subline">April 2027 · Bali · 700 to 1,000 entrepreneurs</p>
           <WaitlistForm />
           <div class="waitlist-proof">
-            <span>700–1,000 entrepreneurs</span>
+            <span>700 to 1,000 entrepreneurs</span>
             <span>Priestley confirmed</span>
             <span>April 2027</span>
           </div>
+          <p style="margin-top:32px">
+            <a class="btn-outline" href="/sponsors">Become a sponsor</a>
+          </p>
         </div>
       </main>
     </div>

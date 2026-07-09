@@ -1,11 +1,38 @@
 ---
-import { ORG_NAME } from '../data/site';
+import { CONTACT_EMAIL, ORG_NAME } from '../data/site';
+import { LOGO_WHITE } from '../data/cdn';
 ---
 
-<footer>
-  <div class="wrap">
-    <div class="logo">AI&nbsp;POWERED <span style="color:var(--accent)">BALI</span></div>
-    <p>{ORG_NAME} · Founder &amp; Director: Ross Power · Bali, Indonesia</p>
-    <p style="margin-top:6px">September 2026 · Canggu &nbsp;—&nbsp; April 2027 · Bali</p>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-brand">
+      <p>
+        {ORG_NAME}. The premier entrepreneur conference for the builders of the AI era. April 2027, Bali.
+      </p>
+    </div>
+    <div class="site-footer-links">
+      <div class="site-footer-ctas">
+        <a class="btn-white" href="/waitlist">Join waitlist</a>
+        <a class="btn-outline" href="/sponsors">Become a sponsor</a>
+      </div>
+      <nav class="site-footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/speakers">Speakers</a>
+        <a href="/about">About</a>
+        <a href="/sponsors">Sponsors</a>
+        <a href="/waitlist">Waitlist</a>
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </nav>
+    </div>
+  </div>
+  <div class="site-footer-meta">
+    <p>
+      &copy; 2026 AI Powered &middot;
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> &middot;
+      <a href="https://claude.aipowered.xyz">claude.aipowered.xyz</a>
+    </p>
+  </div>
+  <div class="site-footer-mark">
+    <img class="site-footer-mark-img" src={LOGO_WHITE} alt="AI Powered" />
   </div>
 </footer>

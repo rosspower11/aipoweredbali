@@ -1,49 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
 import SpeakerCard from '../components/SpeakerCard.astro';
-import SpeakerMystery from '../components/SpeakerMystery.astro';
+import SpeakerTargetPills from '../components/SpeakerTargetPills.astro';
 import SpeakerForm from '../components/SpeakerForm.astro';
-import { SPEAKERS, MYSTERY_SPEAKER_COUNT } from '../data/speakers';
+import {
+  COMMITTED_SPEAKERS,
+  IN_DISCUSSION_SPEAKERS,
+  TARGET_SPEAKERS,
+} from '../data/speakers';
 ---
 
 <BaseLayout
   title="Speakers · April 2027"
-  description="Daniel Priestley confirmed. Dan Koe and Tom Noske in discussion. Plus more speakers to be announced. Apply to speak at AI Powered Bali."
-  ctaHref="/waitlist"
-  ctaLabel="Join waitlist"
+  description="Daniel Priestley committed. Dan Koe and Tom Noske in discussion. World-class targets across Human, Artificial and Divine. Apply to speak at AI Powered Bali."
 >
-  <header class="hero" style="padding-bottom:64px">
-    <div class="wrap">
-      <div class="kicker">The Line-Up · April 2027</div>
-      <h1>Voices this audience already follows.</h1>
-      <p class="lead">A combined audience of <b style="color:#fff">4.5M+ followers</b> across the confirmed and target line-up — and more announcements coming.</p>
-    </div>
-  </header>
+  <Hero
+    eyebrow="The Line-Up · April 2027"
+    title="The names your audience is already learning from."
+    lead="Practical builders. World-class teachers. Now in the room, not on a screen."
+    primaryCta={{ href: '/waitlist', label: 'Join waitlist' }}
+    secondaryCta={{ href: '/sponsors', label: 'Become a sponsor' }}
+    compact
+  />
 
-  <section class="dark" style="padding-top:0">
+  <!-- Committed -->
+  <section class="section-dark" style="padding-top:0">
     <div class="wrap">
-      {SPEAKERS.map((speaker, i) => (
-        <>
-          {i > 0 && <div class="divider" />}
-          <SpeakerCard speaker={speaker} />
-        </>
+      <p class="kicker">Committed</p>
+      <h2>Confirmed for April 2027.</h2>
+      <p class="lead mb-44">Headline speakers locked in. More announcements coming.</p>
+      {COMMITTED_SPEAKERS.map((speaker) => (
+        <SpeakerCard speaker={speaker} featured />
       ))}
-
-      <div class="divider" />
-
-      <div class="kicker">More to come</div>
-      <h2 style="font-size:clamp(24px,3vw,36px);margin-bottom:32px">Further speakers being announced.</h2>
-      <div class="speaker-grid">
-        {Array.from({ length: MYSTERY_SPEAKER_COUNT }).map(() => (
-          <SpeakerMystery />
-        ))}
-      </div>
-
-      <p class="footnote">*Follower counts from public trackers, July 2026 — indicative and rounded. Further speakers to be announced across AI, business, creativity and consciousness.</p>
     </div>
   </section>
 
-  <section style="background:var(--paper)">
+  <!-- In discussion + targets (two-column like reference) -->
+  <section class="section-dark">
+    <div class="wrap">
+      <div class="speakers-split">
+        <div class="speakers-split-col">
+          <p class="kicker">In discussion</p>
+          <p class="text-soft" style="margin-bottom:28px;font-size:15px">We'd love to make you our headline speaker.</p>
+          {IN_DISCUSSION_SPEAKERS.map((speaker, i) => (
+            <>
+              {i > 0 && <div class="divider" />}
+              <SpeakerCard speaker={speaker} showBio={false} />
+            </>
+          ))}
+        </div>
+        <div class="speakers-split-col">
+          <p class="kicker">Initial targets</p>
+          <p class="text-soft" style="margin-bottom:28px;font-size:15px">Showing the caliber we're pursuing.</p>
+          <SpeakerTargetPills targets={TARGET_SPEAKERS} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What unites them -->
+  <section class="section-dark" style="padding-top:0">
+    <div class="wrap">
+      <div class="grid g2" style="gap:52px;align-items:start">
+        <div>
+          <p class="kicker">What unites them</p>
+          <h2 style="font-size:clamp(28px,4vw,44px)">Practical builders.</h2>
+        </div>
+        <div class="quote" style="font-style:normal">
+          The names your audience is already learning from, now in the room where Bali's entrepreneur community gathers.
+        </div>
+      </div>
+      <p class="footnote" style="margin-top:48px">*Follower counts from public trackers, July 2026. Indicative and rounded. Target names represent conversations in progress, not confirmed bookings.</p>
+    </div>
+  </section>
+
+  <section class="section-light">
     <div class="wrap">
       <SpeakerForm />
     </div>
