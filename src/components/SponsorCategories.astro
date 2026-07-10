@@ -22,7 +22,11 @@ const pillarLabels: Record<string, string> = {
         {cat.brands.map((brand) => {
           const logo = sponsorLogoUrl(brand);
           return logo ? (
-            <div class="partner-brand-logo" title={`${brand} — target sponsor`}>
+            <div
+              class="partner-brand-logo"
+              data-tooltip={brand}
+              aria-label={`${brand} — target sponsor`}
+            >
               <img
                 src={logo}
                 alt={brand}
@@ -33,7 +37,7 @@ const pillarLabels: Record<string, string> = {
               <span class="partner-brand-fallback" hidden>{brand}</span>
             </div>
           ) : (
-            <span class="partner-brand">{brand}</span>
+            <span class="partner-brand" data-tooltip={brand}>{brand}</span>
           );
         })}
       </div>
