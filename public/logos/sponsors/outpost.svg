@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="110" height="40" viewBox="0 0 110 40" role="img" aria-label="Outpost">
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" role="img" aria-label="Outpost">
   <title>Outpost</title>
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
-        fill="#111111" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"
-        font-size="22" font-weight="600" letter-spacing="-0.02em">Outpost</text>
+  <rect x="0" y="10" width="20" height="20" rx="4" fill="#111111"/>
+  <text x="28" y="20" dominant-baseline="central" fill="#111111"
+        font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="700" letter-spacing="-0.02em">Outpost</text>
 </svg>

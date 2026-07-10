@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="129" height="40" viewBox="0 0 129 40" role="img" aria-label="Anthropic">
-  <title>Anthropic</title>
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
-        fill="#111111" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"
-        font-size="22" font-weight="600" letter-spacing="-0.02em">Anthropic</text>
-</svg>
+<svg fill="#191919" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Anthropic</title><path fill="#191919" d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>

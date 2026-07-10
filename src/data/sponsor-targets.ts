@@ -1,3 +1,5 @@
+import logoFiles from './sponsor-logo-files.json';
+
 export type SponsorPillar = 'human' | 'artificial' | 'divine';
 
 export interface SponsorTarget {
@@ -44,7 +46,7 @@ export const SPONSOR_TARGETS: SponsorTarget[] = [
   { name: 'Alo Yoga', slug: 'alo-yoga', pillar: 'divine' },
 ];
 
-/** Brand display name → local SVG slug (covers category grids + marquee) */
+/** Brand display name → local logo slug (covers category grids + marquee) */
 export const SPONSOR_LOGO_SLUGS: Record<string, string> = {
   Anthropic: 'anthropic',
   OpenAI: 'openai',
@@ -103,8 +105,12 @@ export const SPONSOR_LOGO_SLUGS: Record<string, string> = {
   Organifi: 'organifi',
 };
 
+const LOGO_FILES = logoFiles as Record<string, string>;
+
 export function sponsorLogoUrl(nameOrSlug: string): string | null {
   const slug = SPONSOR_LOGO_SLUGS[nameOrSlug] ?? nameOrSlug;
   if (!slug || slug.includes(' ')) return null;
-  return `/logos/sponsors/${slug}.svg`;
+  const file = LOGO_FILES[slug];
+  if (!file) return null;
+  return `/logos/sponsors/${file}`;
 }

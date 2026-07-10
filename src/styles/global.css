@@ -2526,8 +2526,8 @@ main {
 .partner-brand-logo {
   width: 112px;
   height: 56px;
-  background: var(--bg-mid);
-  border: 1px solid var(--border-dark);
+  background: #f4f4f5;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -2539,12 +2539,11 @@ main {
   max-width: 100%;
   max-height: 28px;
   object-fit: contain;
-  filter: invert(1);
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .partner-brands--logos .partner-brand-fallback {
-  color: var(--text-white);
+  color: #111;
 }
 
 @media (max-width: 900px) {

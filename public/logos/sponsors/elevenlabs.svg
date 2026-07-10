@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="143" height="40" viewBox="0 0 143 40" role="img" aria-label="ElevenLabs">
-  <title>ElevenLabs</title>
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
-        fill="#111111" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"
-        font-size="22" font-weight="600" letter-spacing="-0.02em">ElevenLabs</text>
-</svg>
+<svg fill="#000000" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>ElevenLabs</title><path fill="#000000" d="M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z"/></svg>
