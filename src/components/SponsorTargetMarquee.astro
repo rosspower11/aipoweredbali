@@ -22,7 +22,7 @@ const targets = [...SPONSOR_TARGETS, ...SPONSOR_TARGETS];
       {targets.map((target) => (
         <div class="sponsor-logo-card" title={`${target.name} — target sponsor`}>
           <img
-            src={sponsorLogoUrl(target.domain)}
+            src={sponsorLogoUrl(target.slug) ?? sponsorLogoUrl(target.name)!}
             alt={target.name}
             loading="lazy"
             decoding="async"

@@ -2283,8 +2283,7 @@ main {
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .sponsor-logo-fallback,
@@ -2538,10 +2537,14 @@ main {
 
 .partner-brand-logo img {
   max-width: 100%;
-  max-height: 32px;
+  max-height: 28px;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.8;
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+.partner-brands--logos .partner-brand-fallback {
+  color: var(--text-white);
 }
 
 @media (max-width: 900px) {

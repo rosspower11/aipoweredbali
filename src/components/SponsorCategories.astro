@@ -1,14 +1,12 @@
 ---
 import { PARTNER_CATEGORIES } from '../data/sponsors';
-import { SPONSOR_TARGETS, sponsorLogoUrl } from '../data/sponsor-targets';
+import { sponsorLogoUrl } from '../data/sponsor-targets';
 
 const pillarLabels: Record<string, string> = {
   human: '01 · Human',
   artificial: '02 · Artificial',
   divine: '03 · Divine',
 };
-
-const logoByName = Object.fromEntries(SPONSOR_TARGETS.map((t) => [t.name, t.domain]));
 ---
 
 <div class="partner-pillars">
@@ -22,11 +20,11 @@ const logoByName = Object.fromEntries(SPONSOR_TARGETS.map((t) => [t.name, t.doma
       </p>
       <div class="partner-brands partner-brands--logos">
         {cat.brands.map((brand) => {
-          const domain = logoByName[brand];
-          return domain ? (
+          const logo = sponsorLogoUrl(brand);
+          return logo ? (
             <div class="partner-brand-logo" title={`${brand} — target sponsor`}>
               <img
-                src={sponsorLogoUrl(domain)}
+                src={logo}
                 alt={brand}
                 loading="lazy"
                 decoding="async"
